@@ -3,268 +3,272 @@
 <!--! ================================================================ !-->
 <div class="" id="">
     <!--! Start:: Breadcumb !-->
-    <div class="edash-content-breadcumb row mb-4 mb-md-6 pt-md-2">
-        <div class="col-12">
-            <div class="d-flex align-items-center justify-content-between">
-                <div>
-                    <h2 class="h4 fw-semibold text-dark">Summery</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
+    @if (in_array(Auth::user()->er_status, [4]))
+        <div class="edash-content-breadcumb row mb-4 mb-md-6 pt-md-2">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h2 class="h4 fw-semibold text-dark">Summery</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0">
 
-                            <li class="breadcrumb-item">
-                                <a href="javascript:void(0;)">Dashboard</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Summery
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                {{-- <div class="d-flex align-items-center gap-2">
+                                <li class="breadcrumb-item">
+                                    <a href="javascript:void(0;)">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Summery
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    {{-- <div class="d-flex align-items-center gap-2">
                     <a href="javascript:void(0);" class="btn btn-md bg-white text-black d-none d-sm-flex">New
                         Project</a>
                     <a href="javascript:void(0);" class="btn btn-md btn-primary">Reports</a>
                 </div> --}}
+                </div>
             </div>
         </div>
-    </div>
-    <!--! End:: Breadcumb !-->
-    <!--! Start:: Content Section !-->
-    <div class="edash-content-section row g-3 g-md-4">
-        <!-- Start:: Earning & Expense -->
+    @endif
+    @if (in_array(Auth::user()->er_status, [4]))
+        <div class="edash-content-section row g-3 g-md-4">
+            <!-- Start:: Earning & Expense -->
 
 
-        <div class="col-xxl-8">
-            <div class="card mb-3 mb-md-4">
-                <div class="card-body">
-                    <div class="mb-4 d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="fs-18">Overview</h5>
-                            <p class="fs-13 text-muted mb-0">
+            <div class="col-xxl-8">
+                <div class="card mb-3 mb-md-4">
+                    <div class="card-body">
+                        <div class="mb-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="fs-18">Overview</h5>
+                                <p class="fs-13 text-muted mb-0">
 
-                            </p>
-                        </div>
-                        {{-- <a href="javascript:void(0);" class="icon-link icon-link-hover link-primary">
+                                </p>
+                            </div>
+                            {{-- <a href="javascript:void(0);" class="icon-link icon-link-hover link-primary">
                             <span>View Details</span>
                             <i class="fi fi-rr-arrow-small-right bi"></i>
                         </a> --}}
+                        </div>
+
+                        @if ($user->is_admin)
+                            <div class="row g-3 g-md-4">
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
+                                                    <i class="fi fi-rr-chart-histogram"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalComission, 2) }}
+                                                    </h4>
+                                                    <span class="fs-13 text-muted">Total Commission</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
+                                                    <i class="fi fi-rr-stats"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalDirectSaleComission, 2) }}</h4>
+                                                    <span class="fs-13 text-muted">Direct Sale Commission</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-success-subtle text-success">
+                                                    <i class="fi fi-rr-sack-dollar"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalGroupSaleComission, 2) }}</h4>
+                                                    <span class="fs-13 text-muted"> Group Sale Commission</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
+                                                    <i class="fi fi-br-check"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalPaidComission, 2) }}
+                                                    </h4>
+                                                    <span class="fs-13 text-muted">Total Withdrawal Request
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
+                                                    <i class="fi fi-rr-settings-sliders"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalUnpaidComission, 2) }}</h4>
+                                                    <span class="fs-13 text-muted">Total Unpaid Withdrawals</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="{{ route('referrals.pending') }}">
+                                        <div class="card">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center justify-content-between pd-5">
+                                                    <div
+                                                        class="avatar avatar-xl rounded bg-success-subtle text-success">
+                                                        <i class="fi fi-ss-users"></i>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <h4 class="fs-18 fw-semibold">{{ $registrationRequests }}</h4>
+                                                        <span class="fs-13 text-muted">Registration Requests</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row g-3 g-md-4">
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
+                                                    <i class="fi fi-rr-chart-histogram"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($directEarnings, 2) }}
+                                                    </h4>
+                                                    <span class="fs-13 text-muted">Direct Earnings</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
+                                                    <i class="fi fi-rr-stats"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($groupEarnings, 2) }}</h4>
+                                                    <span class="fs-13 text-muted">Group Earning</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-success-subtle text-success">
+                                                    <i class="fi fi-rr-sack-dollar"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalEarning, 2) }}</h4>
+                                                    <span class="fs-13 text-muted"> Total Earnings </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
+                                                    <i class="fi fi-br-check"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($totalWithdrawals, 2) }}
+                                                    </h4>
+                                                    <span class="fs-13 text-muted">Total Withdrawals
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex align-items-center justify-content-between pd-5">
+                                                <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
+                                                    <i class="fi fi-rr-settings-sliders"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h4 class="fs-18 fw-semibold">{{ env('CURRENCY') }}
+                                                        {{ number_format($accountBalance, 2) }}</h4>
+                                                    <span class="fs-13 text-muted"> Account Balance
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="{{ route('referrals.pending') }}">
+                                        <div class="card">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center justify-content-between pd-5">
+                                                    <div
+                                                        class="avatar avatar-xl rounded bg-success-subtle text-success">
+                                                        <i class="fi fi-ss-users"></i>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <h4 class="fs-18 fw-semibold">{{ $registrationRequests }}</h4>
+                                                        <span class="fs-13 text-muted">Registration Requests</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-
-                    @if ($user->is_admin)
-                        <div class="row g-3 g-md-4">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
-                                                <i class="fi fi-rr-chart-histogram"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalComission, 2) }}
-                                                </h4>
-                                                <span class="fs-13 text-muted">Total Commission</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
-                                                <i class="fi fi-rr-stats"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalDirectSaleComission, 2) }}</h4>
-                                                <span class="fs-13 text-muted">Direct Sale Commission</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-success-subtle text-success">
-                                                <i class="fi fi-rr-sack-dollar"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalGroupSaleComission, 2) }}</h4>
-                                                <span class="fs-13 text-muted"> Group Sale Commission</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
-                                                <i class="fi fi-br-check"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalPaidComission, 2) }}
-                                                </h4>
-                                                <span class="fs-13 text-muted">Total Withdrawal Request
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
-                                                <i class="fi fi-rr-settings-sliders"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalUnpaidComission, 2) }}</h4>
-                                                <span class="fs-13 text-muted">Total Unpaid Withdrawals</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <a href="{{ route('referrals.pending') }}">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="d-flex align-items-center justify-content-between pd-5">
-                                                <div class="avatar avatar-xl rounded bg-success-subtle text-success">
-                                                    <i class="fi fi-ss-users"></i>
-                                                </div>
-                                                <div class="text-end">
-                                                    <h4 class="fs-18 fw-semibold">{{ $registrationRequests }}</h4>
-                                                    <span class="fs-13 text-muted">Registration Requests</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row g-3 g-md-4">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
-                                                <i class="fi fi-rr-chart-histogram"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($directEarnings, 2) }}
-                                                </h4>
-                                                <span class="fs-13 text-muted">Direct Earnings</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
-                                                <i class="fi fi-rr-stats"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($groupEarnings, 2) }}</h4>
-                                                <span class="fs-13 text-muted">Group Earning</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-success-subtle text-success">
-                                                <i class="fi fi-rr-sack-dollar"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalEarning, 2) }}</h4>
-                                                <span class="fs-13 text-muted"> Total Earnings </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-warning-subtle text-warning">
-                                                <i class="fi fi-br-check"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($totalWithdrawals, 2) }}
-                                                </h4>
-                                                <span class="fs-13 text-muted">Total Withdrawals
-
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="d-flex align-items-center justify-content-between pd-5">
-                                            <div class="avatar avatar-xl rounded bg-danger-subtle text-danger">
-                                                <i class="fi fi-rr-settings-sliders"></i>
-                                            </div>
-                                            <div class="text-end">
-                                                <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}
-                                                    {{ number_format($accountBalance, 2) }}</h4>
-                                                <span class="fs-13 text-muted"> Account Balance
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <a href="{{ route('referrals.pending') }}">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="d-flex align-items-center justify-content-between pd-5">
-                                                <div class="avatar avatar-xl rounded bg-success-subtle text-success">
-                                                    <i class="fi fi-ss-users"></i>
-                                                </div>
-                                                <div class="text-end">
-                                                    <h4 class="fs-18 fw-semibold">{{ $registrationRequests }}</h4>
-                                                    <span class="fs-13 text-muted">Registration Requests</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    @endif
                 </div>
+
+
             </div>
-
-
-        </div>
-
+    @endif
+    @if (in_array(Auth::user()->er_status, [4]) || $user->referrel_enabled == 1)
         <div class="col-xxl-4">
             <!-- card Start:: -->
             <div class="card mb-3 mb-md-4">
@@ -308,7 +312,7 @@
                                         </dl>
                                     </div>
                                 </div>
-                                @if ($user->er_status == 4)
+                                @if ($user->er_status == 4 || $user->referrel_enabled == 1)
                                     <input type="hidden" id="ref_link" value="{{ $referral_link }}">
                                     <button type="button" @click='copy()' class="btn btn-md btn-primary col-12">Copy
                                         Referral Link</button>
@@ -321,72 +325,72 @@
             <!-- card End:: -->
 
         </div>
-
-        <!-- row End:: -->
-        @if ($user->is_admin)
-            <!-- Start:: Multiple Bar -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Income Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="multipleBarAdmin" class="ht-400"></canvas>
-                    </div>
+    @endif
+    <!-- row End:: -->
+    @if ($user->is_admin)
+        <!-- Start:: Multiple Bar -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Income Chart</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="multipleBarAdmin" class="ht-400"></canvas>
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Registration Records</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="multipleBarAdminRegistrations" class="ht-400"></canvas>
-                    </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Registration Records</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="multipleBarAdminRegistrations" class="ht-400"></canvas>
                 </div>
             </div>
-            <!-- End:: Multiple Bar -->
-        @else
-            <!-- Start:: Multiple Bar -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Income Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="multipleBar" class="ht-400"></canvas>
-                    </div>
+        </div>
+        <!-- End:: Multiple Bar -->
+    @elseif(in_array(Auth::user()->er_status, [4]))
+        <!-- Start:: Multiple Bar -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Income Chart</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="multipleBar" class="ht-400"></canvas>
                 </div>
             </div>
-            <!-- End:: Multiple Bar -->
+        </div>
+        <!-- End:: Multiple Bar -->
 
-            <!-- Start:: Pie Chart -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">User Status</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="pieChart1" class="ht-400"></canvas>
-                    </div>
+        <!-- Start:: Pie Chart -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">User Status</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="pieChart1" class="ht-400"></canvas>
                 </div>
             </div>
-            <!-- End:: Pie Chart -->
-        @endif
+        </div>
+        <!-- End:: Pie Chart -->
+    @endif
 
 
-        <style>
-            dl.dl-horizontal dt {
-                margin-bottom: 9px;
-            }
+    <style>
+        dl.dl-horizontal dt {
+            margin-bottom: 9px;
+        }
 
-            dl.dl-horizontal dd {
-                margin-bottom: 9px;
+        dl.dl-horizontal dd {
+            margin-bottom: 9px;
 
-            }
-        </style>
-    </div>
+        }
+    </style>
+</div>
 </div>
 
 

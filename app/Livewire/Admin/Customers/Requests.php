@@ -177,13 +177,17 @@ class Requests extends Component
             if (!isset($appliedCourse))
                 abort(404);
 
-            /**
-             * Add Direct Comission to Referral
-             */
-            $this->addDirectComission(
-                userId: $user->referrer_id,
-                amount: $appliedCourse->course?->referer_commission
-            );
+
+            if ($user->er_status == User::USER_STATUS['ER']) {
+
+                /**
+                 * Add Direct Comission to Referral
+                 */
+                $this->addDirectComission(
+                    userId: $user->referrer_id,
+                    amount: $appliedCourse->course?->referer_commission
+                );
+            }
 
             /**
              * Add points to Referrals

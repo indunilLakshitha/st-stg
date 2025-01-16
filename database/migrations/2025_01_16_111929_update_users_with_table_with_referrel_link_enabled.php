@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_reviews', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_id')->index('product_id');
-            $table->integer('rating')->default(5);
-            $table->text('comment')->nullable();
-
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('referrel_enabled')->nullable()->default(0)->index()
+                ->after('er_status');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_reviews');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('referrel_enabled');
+        });
     }
 };

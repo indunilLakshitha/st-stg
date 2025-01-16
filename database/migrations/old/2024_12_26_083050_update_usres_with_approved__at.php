@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+      /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('product_categories', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->string('cat_name');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dateTime('approved_at')->nullable()->index()
+                ->after('approved_by_admin');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_categories');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('approved_at');
+        });
     }
 };

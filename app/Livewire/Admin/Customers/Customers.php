@@ -158,6 +158,28 @@ class Customers extends Component
         return abort(404);
     }
 
+    public function enableRef($id)
+    {
+
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin  && $customer->er_status  == User::USER_STATUS['FULL']) {
+
+            if ($customer->referrel_enabled == true) {
+
+                $customer->referrel_enabled = false;
+            } else {
+
+                $customer->referrel_enabled = true;
+            }
+
+            $customer->save();
+
+            $this->dispatch('success_alert', ['title' => 'User successfully Updated']);
+            return $this->mount();
+        }
+    }
+
     public function fullActivate($id)
     {
         $customer = User::where('id', $id)->first();

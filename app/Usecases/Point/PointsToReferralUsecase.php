@@ -55,12 +55,16 @@ class PointsToReferralUsecase
             }
 
             if (sizeof($leftPointIdList)) {
-                User::whereIn('id', $leftPointIdList)->where('er_status', User::USER_STATUS['ER'])->update(['left_points' => DB::raw('left_points +' . $point)]);
+                User::whereIn('id', $leftPointIdList)
+                    ->where('er_status', User::USER_STATUS['ER'])
+                    ->update(['left_points' => DB::raw('left_points +' . $point)]);
                 $history->left_point_id_list = json_encode($leftPointIdList);
             }
 
             if (sizeof($rightPointIdList)) {
-                User::whereIn('id', $rightPointIdList)->where('er_status', User::USER_STATUS['ER'])->update(['right_points' => DB::raw('right_points +' . $point)]);
+                User::whereIn('id', $rightPointIdList)
+                    ->where('er_status', User::USER_STATUS['ER'])
+                    ->update(['right_points' => DB::raw('right_points +' . $point)]);
                 $history->right_point_id_list = json_encode($rightPointIdList);
             }
             $history->ended_at = Carbon::now();

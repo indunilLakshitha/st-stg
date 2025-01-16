@@ -44,7 +44,8 @@
                                         </div>
                                         <div class="col-lg-2 mb-2 mb-md-0">
                                             <label class="form-label">Course:</label>
-                                            <select class="form-select" wire:change="filter()" wire:model='selected_course'>
+                                            <select class="form-select" wire:change="filter()"
+                                                wire:model='selected_course'>
                                                 <option value="0">ALL</option>
                                                 @foreach ($courses as $course)
                                                     <option value="{{ $course->id }}">{{ $course->name }}</option>
@@ -112,9 +113,10 @@
 
                             {{-- <div class="ms-auto"> --}}
 
-                                <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search' wire:input='filter' wire:change='filter()' placeholder="Search here...">
+                            <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search'
+                                wire:input='filter' wire:change='filter()' placeholder="Search here...">
 
-                                <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a>
+                            <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a>
                             {{-- </div> --}}
                         </div>
                     </div>
@@ -221,6 +223,22 @@
                                                     wire:click='delete({{ $user->id }})' type="button"
                                                     wire:confirm="Are you sure you want to Delete this customer?">
                                                     <i class="fi fi-sr-trash"></i>
+                                                </button>
+                                            @endif
+                                            @if (!$user->referrel_enabled && $user->er_status == 3)
+                                                <button class="btn btn-primary btn-icon" data-bs-toggle="tooltip"
+                                                    data-bs-trigger="hover" title="Enable Refferrel"
+                                                    wire:click='enableRef({{ $user->id }})' type="button"
+                                                    wire:confirm="Are you sure you want to Enable Refferrel this customer?">
+                                                    <i class="fi fi-br-check-double"></i>
+                                                </button>
+                                            @endif
+                                            @if ($user->referrel_enabled && $user->er_status == 3)
+                                                <button class="btn btn-danger btn-icon" data-bs-toggle="tooltip"
+                                                    data-bs-trigger="hover" title="Enable Refferrel"
+                                                    wire:click='enableRef({{ $user->id }})' type="button"
+                                                    wire:confirm="Are you sure you want to Dinable Refferrel this customer?">
+                                                    <i class="fi fi-br-check-double"></i>
                                                 </button>
                                             @endif
 

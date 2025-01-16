@@ -17,8 +17,8 @@ return new class extends Migration
             $table->index('user_id');
             $table->unsignedBigInteger('wallet_id');
             $table->index('wallet_id');
-            $table->decimal('amount')->default(0);
-            $table->decimal('balance')->default(0);
+            $table->decimal('amount',20,2)->default(0);
+            $table->decimal('balance',20,2)->default(0);
             $table->dateTime('requested_at')->nullable();
             $table->unsignedBigInteger('requested_by')->nullable();
 

@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_id')->index('product_id');
-            $table->string('image');
-            $table->string('thumb')->null;
-            $table->timestamps();
+        Schema::table('cart_items', function (Blueprint $table) {
+            $table->decimal('each', 20, 2)->nullable()->default(0)
+                ->after('quantity');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_images');
+        Schema::table('cart_items', function (Blueprint $table) {
+            $table->dropColumn('each');
+        });
     }
 };
