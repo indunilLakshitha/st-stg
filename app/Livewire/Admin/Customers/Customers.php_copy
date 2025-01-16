@@ -1,0 +1,160 @@
+<?php
+
+namespace App\Livewire\Admin\Customers;
+
+use App\Models\Course;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+
+class Customers extends Component
+{
+    public $customers, $courses;
+    public $active_status, $status, $type = 1;
+
+    public function mount()
+    {
+        $this->customers = User::with('referrer', 'purchase.course')
+            ->where('is_admin', false)
+            ->where('type', User::MAIN)
+            ->where('approved_by_referrer', true)
+            ->get();
+
+        $this->courses = Course::select('name', 'id')->get();
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.customers.customers');
+    }
+
+    public function filter()
+    {
+        $customers = User::query()->where('approved_by_referrer', true);
+        $customers = $customers->when($this->active_status, function ($q) {
+            return $q->where('active_status', $this->active_status);
+        });
+        $customers = $customers->when($this->status, function ($q) {
+            return $q->where('er_status', $this->status);
+        });
+        $customers = $customers->when($this->type, function ($q) {
+            if ($this->type == 1)
+                return $q->where('type', User::MAIN);
+
+            if ($this->type == 2)
+                return $q->where('type', '!=', User::MAIN);
+        });
+
+        $this->customers = [];
+        $this->customers =  $customers->get();
+    }
+
+    public function block($id)
+    {
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin) {
+            $customer->active_status = User::BLOCKED;
+            $customer->save();
+
+            // session()->flash('message', 'User successfully Blocked.');
+            $this->dispatch('success_alert', ['title' => 'User successfully Blocked']);
+
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function unblock($id)
+    {
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin) {
+            $customer->active_status = User::UNBLOCKED;
+            $customer->save();
+
+            // session()->flash('message', 'User successfully Unblocked.');
+            $this->dispatch('success_alert', ['title' => 'User successfully Unblocked']);
+
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function erActivate($id)
+    {
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin) {
+            $customer->er_status = User::USER_STATUS['ER'];
+            $customer->my_left_a2_active = true;
+            $customer->my_right_a2_active = true;
+            $customer->save();
+
+            // session()->flash('message', 'User successfully Unblocked.');
+            $this->dispatch('success_alert', ['title' => 'User successfully ER Activated']);
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function fullActivate($id)
+    {
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin) {
+            $customer->er_status = User::USER_STATUS['FULL'];
+            $customer->save();
+
+            // session()->flash('message', 'User successfully Unblocked.');
+            $this->dispatch('success_alert', ['title' => 'User successfully Full Activated']);
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function delete($id)
+    {
+        $customer = User::where('id', $id)->first();
+
+        if (Auth::user()->is_admin && !$customer->approved_by_admin) {
+            $customer->forceDelete();
+
+            $this->dispatch('success_alert', ['title' => 'User successfully Deleted']);
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function changeTreeStatus($id)
+    {
+        $customer = User::where('id', $id)->first();
+        if (Auth::user()->is_admin) {
+
+            if ($customer->is_tree_enabled) {
+                $customer->is_tree_enabled = false;
+            } else {
+                $customer->is_tree_enabled = true;
+            }
+
+            $customer->save();
+
+            // session()->flash('message', 'User successfully Updated.');
+            $this->dispatch('success_alert', ['title' => 'User successfully Updated']);
+
+            return $this->mount();
+        }
+
+        return abort(404);
+    }
+
+    public function showHover()
+    {
+        // dd('sss');
+    }
+}
