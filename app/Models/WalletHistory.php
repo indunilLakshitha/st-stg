@@ -42,7 +42,7 @@ class WalletHistory extends Model
 
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'id', 'user_id')->select('id', 'first_name', 'last_name', 'reg_no', 'name', 'type');
+        return $this->hasOne(User::class, 'id', 'user_id')->select('id', 'first_name', 'last_name', 'reg_no', 'name', 'type','mobile_no');
     }
 
     public function admin(): HasOne

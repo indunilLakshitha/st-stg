@@ -22,11 +22,11 @@
                                 </select> --}}
                                 <input type="text" class="form-control" wire:input='getPathBySearch()'
                                     wire:focus='getPathBySearch()' wire:model='keyword' />
-                                <div class="panel-footer">
-                                    <ul class="list-group">
+                                <div class="panel-footer ">
+                                    <ul class="list-group cus-list">
                                         @foreach ($filteredPaths as $p)
                                             <li class="list-group-item" wire:click='setPathValue({{ $p }})'>
-                                                {{ $p->first_name . ' - ' . $p->last_name . ' ' . $p->type }}
+                                                {{ $p->first_name . ' - ' . $p->last_name . ' ' . $p->type . ' ' . $p->id }}
                                             </li>
                                         @endforeach
 
@@ -111,6 +111,11 @@
                     position: absolute;
                     width: calc(100% - 30px);
                     z-index: 9;
+                }
+
+                .cus-list {
+                    max-height: 400px !important;
+                    overflow-y:scroll
                 }
 
                 .form-group {

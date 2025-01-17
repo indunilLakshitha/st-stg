@@ -7,45 +7,56 @@ use App\Traits\WalletTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Pending extends Component
 {
-    use WalletTrait;
+    use WalletTrait, WithPagination;
 
-    public $pendings = [], $comissions;
+    public  $comissions;
     public $total_direct_sale = 0, $total_group_sale = 0, $total_amount = 0;
     public $total_withdrawal_requests = 0, $total_pending_deposites = 0, $total_deposites = 0;
     public $selected_bank;
+    public $status = WalletHistory::STATUS['REQUESTED'], $from, $to;
 
-    public function mount()
-    {
-        $pendings = WalletHistory::with('user.bank', 'wallet')
-            // ->where('status', WalletHistory::STATUS['REQUESTED'])
-            ->where('type', WalletHistory::TYPE['REMOVED'])
-            ->get();
+    protected $queryString = ['status', 'from', 'to'];
 
-        // $this->comissions = WalletHistory::join('users', 'users.id', 'wallet_histories.user_id')
-        //     ->select('wallet_histories.*', 'users.id', 'users.first_name', 'users.reg_no', 'users.type as user_type')
-        //     ->where('wallet_histories.type', WalletHistory::TYPE['ADDED'])
-        //     ->orderBy('wallet_histories.id', 'desc')
-        //     ->get();
-
-
-        // $this->total_direct_sale = $this->getDirectSale();
-        // $this->total_group_sale = $this->getGroupSale();
-        // $this->total_amount =  $this->total_direct_sale + $this->total_group_sale;
-
-        if (isset($pendings)) {
-            $this->pendings = $this->getPEndings($pendings);
-            $this->total_withdrawal_requests = $this->getTotalWithdrawalRequests($pendings);
-            $this->total_pending_deposites = $this->getTotalPendingDeposites($pendings);
-            $this->total_deposites = $this->getTotalDeposites($pendings);
-        }
-    }
+    public function mount() {}
 
     public function render()
     {
-        return view('livewire.admin.deposited.pending');
+        $all_pendings = WalletHistory::with('user.bank', 'wallet')
+            ->where('type', WalletHistory::TYPE['REMOVED'])
+            ->when($this->status, function ($q) {
+                $q->where('status', $this->status);
+            })
+            ->when($this->from, function ($q) {
+                $q->whereDate('requested_at', '>=', $this->from);
+            })
+            ->when($this->to, function ($q) {
+                $q->whereDate('requested_at', '<=', $this->to);
+            })
+            ->get();
+
+        $pendings =  WalletHistory::with('user.bank', 'wallet')
+            ->where('type', WalletHistory::TYPE['REMOVED'])
+            ->when($this->status, function ($q) {
+                $q->where('status', $this->status);
+            })
+            ->when($this->from, function ($q) {
+                $q->whereDate('requested_at', '>=', $this->from);
+            })
+            ->when($this->to, function ($q) {
+                $q->whereDate('requested_at', '<=', $this->to);
+            })
+            ->paginate(10);
+
+        if (isset($all_pendings)) {
+            $this->total_withdrawal_requests = $this->getTotalWithdrawalRequests($all_pendings);
+            $this->total_pending_deposites = $this->getTotalPendingDeposites($all_pendings);
+            $this->total_deposites = $this->getTotalDeposites($all_pendings);
+        }
+        return view('livewire.admin.deposited.pending', ['pendings' => $pendings]);
     }
 
     public function getPEndings($data)
@@ -157,4 +168,6 @@ class Pending extends Component
         }
         return $this->dispatch('bank_set', ['text' => $text]);
     }
+
+    public function  filter() {}
 }

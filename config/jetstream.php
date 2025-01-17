@@ -64,6 +64,9 @@ return [
         // Features::teams(['invitations' => true]),
         Features::accountDeletion(),
     ],
+    'redirects' => [
+        'logout' => '/login',
+    ],
 
     /*
     |--------------------------------------------------------------------------
