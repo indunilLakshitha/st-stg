@@ -27,6 +27,7 @@ class Commission extends Component
         $this->comissions = WalletHistory::join('users', 'users.id', 'wallet_histories.user_id')
             ->select('wallet_histories.*', 'users.id', 'users.first_name', 'users.reg_no', 'users.type as user_type')
             ->where('wallet_histories.type', WalletHistory::TYPE['ADDED'])
+            ->where('wallet_histories.comission_type', '!=', WalletHistory::COMISSION_TYPES['DUMMY_TRANSFERED'])
             ->orderBy('wallet_histories.id', 'desc')
             ->get();
 
@@ -55,6 +56,7 @@ class Commission extends Component
         $comissions = WalletHistory::join('users', 'users.id', 'wallet_histories.user_id')
             ->select('wallet_histories.*', 'users.id', 'users.first_name', 'users.reg_no', 'users.type as user_type')
             ->where('wallet_histories.type', WalletHistory::TYPE['ADDED'])
+            ->where('wallet_histories.comission_type', '!=', WalletHistory::COMISSION_TYPES['DUMMY_TRANSFERED'])
             ->orderBy('wallet_histories.id', 'desc');
 
 
