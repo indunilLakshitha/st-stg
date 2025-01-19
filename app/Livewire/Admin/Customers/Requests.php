@@ -71,6 +71,7 @@ class Requests extends Component
             })
             ->select(
                 'users.id',
+                'users.created_at',
                 'users.reg_no',
                 'users.mobile_no',
                 'users.er_status',

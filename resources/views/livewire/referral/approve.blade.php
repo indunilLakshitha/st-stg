@@ -26,7 +26,7 @@
                                     <ul class="list-group cus-list">
                                         @foreach ($filteredPaths as $p)
                                             <li class="list-group-item" wire:click='setPathValue({{ $p }})'>
-                                                {{ $p->first_name . ' - ' . $p->last_name . ' ' . $p->type . ' ' . $p->id }}
+                                                {{ $p->first_name . $p->last_name . ' ' . $p->type . ' ' . $p->id }}
                                             </li>
                                         @endforeach
 

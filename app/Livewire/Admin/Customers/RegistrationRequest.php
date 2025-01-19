@@ -26,7 +26,7 @@ class RegistrationRequest extends Component
             ->where('assigned_user_id', NULL)
             ->where('approved_referrer_id', NULL)
             ->where('approved_by_referrer', false)
-            ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name')
+            ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name','created_at')
             ->get();
         $this->courses = Course::all();
     }
@@ -42,7 +42,7 @@ class RegistrationRequest extends Component
                 ->where('assigned_user_id', NULL)
                 ->where('approved_referrer_id', NULL)
                 ->where('approved_by_referrer', false)
-                ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name')
+                ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name','created_at')
                 ->get();
 
             return;

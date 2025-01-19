@@ -100,8 +100,7 @@
                                     <th>Referer</th>
                                     <th>Assigned To</th>
                                     <th>Reg Date</th>
-                                    <th>Contact No</th>
-                                    <th>Selected Course</th>
+                                    <th class="wd">Selected Course</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -115,9 +114,8 @@
                                         <td>{{ $user->assigned_user_id_on_approval . ' ' . $user->assigned_user_side_on_approval }}
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($user->created_at)->format('Y m d') }}</td>
-                                        <td>{{ $user->mobile_no }}</td>
 
-                                        <td><select class="form-select"
+                                        <td ><select class="form-select"
                                                 wire:model="user_selected_courses.{{ $user->id }}"
                                                 id="{{ $user->id }}" required
                                                 wire:change='changeCourseOfUser({{ $user->id }})'>
@@ -169,7 +167,6 @@
                                     <th>Referer</th>
                                     <th>Assigned To</th>
                                     <th>Reg Date</th>
-                                    <th>Contact No</th>
                                     <th>Selected Course</th>
                                     <th>ACTION</th>
                                 </tr>
@@ -204,6 +201,10 @@
 
             #pg_id nav .hidden p {
                 margin: 0px;
+            }
+
+            .wd {
+                width: 550px !important;
             }
         </style>
 </div>
