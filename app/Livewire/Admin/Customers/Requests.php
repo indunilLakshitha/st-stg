@@ -177,8 +177,8 @@ class Requests extends Component
             if (!isset($appliedCourse))
                 abort(404);
 
-
-            if ($user->er_status == User::USER_STATUS['ER']) {
+            $ref_user = User::find($user->referrer_id);
+            if ($ref_user->er_status == User::USER_STATUS['ER']) {
 
                 /**
                  * Add Direct Comission to Referral
