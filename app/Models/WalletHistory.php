@@ -20,6 +20,8 @@ class WalletHistory extends Model
         'requested_by',
         'status',
         'comission_type',
+        'created_at',
+        'updated_at',
     ];
 
 
