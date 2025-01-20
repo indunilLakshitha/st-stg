@@ -175,9 +175,9 @@ Route::middleware(['auth:web', 'noindex'])->prefix('dashboard')->group(function 
     });
 });
 
-Route::get('/test', [TestController::class, 'testPointAdding']);
-Route::get('/test/sms-test', [TestController::class, 'sendOTP']);
-Route::get('/test/sms-test/verify/{otp}/{ref}', [TestController::class, 'verifyOTP']);
-Route::get('/test/sms-test/sendMSG', [TestController::class, 'sendMSG']);
-Route::get('/trnsfer/transferDummyCommissions', [TestController::class, 'transferDummyCommission']);
-Route::get('/fix/commissions', [TestController::class, 'fixCommission']);
+// Route::get('/test', [TestController::class, 'testPointAdding']);
+// Route::get('/test/sms-test', [TestController::class, 'sendOTP']);
+// Route::get('/test/sms-test/verify/{otp}/{ref}', [TestController::class, 'verifyOTP']);
+// Route::get('/test/sms-test/sendMSG', [TestController::class, 'sendMSG']);
+// Route::get('/trnsfer/transferDummyCommissions', [TestController::class, 'transferDummyCommission']);
+// Route::get('/fix/commissions', [TestController::class, 'fixCommission']);
