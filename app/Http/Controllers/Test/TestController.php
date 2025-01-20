@@ -7,10 +7,16 @@ use App\Jobs\SendMailJob;
 use App\Mail\SendRegistrationSuccesEmail;
 use App\Models\MailDetail;
 use App\Models\User;
+use App\Models\UserPuchasedCourse;
+use App\Models\Wallet;
+use App\Models\WalletHistory;
 use App\Services\SmsService;
 use App\Traits\ComissionTrait;
 use App\Traits\SMSTrait;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -97,5 +103,61 @@ class TestController extends Controller
     public function transferDummyCommission()
     {
         return $this->transferDummyCommissions();
+    }
+
+    public function fixCommission()
+    {
+        $users = User::where('approved_at', '>', Carbon::parse('2025-01-17 23:44:30'))
+            ->where('type', User::USER_TYPE['MAIN'])
+            ->select('approved_at', 'id')->get();
+
+        $walletDetails = WalletHistory::where('comission_type', WalletHistory::COMISSION_TYPES['DIRECT'])
+            ->where('created_at', '>', Carbon::parse('2025-01-17 23:44:30'))
+            ->pluck('user_id')
+            ->toArray();
+
+
+        foreach ($users as $user) {
+            if (!in_array($user->id, $walletDetails)) {
+
+                try {
+
+                    DB::beginTransaction();
+                    $userId = $user->id;
+
+                    $appliedCourse = UserPuchasedCourse::with('course')->where('user_id', $user->id)
+                        ->where('type', UserPuchasedCourse::TYPE['REFERRAL'])
+                        ->first();
+                    $amount = $appliedCourse->course?->referer_commission;
+
+                    $wallet = Wallet::where('user_id', $userId)->first();
+                    if (!isset($wallet)) {
+                        $wallet = new Wallet();
+                        $wallet->user_id = $userId;
+                    }
+                    $wallet->balance += $amount;
+                    $wallet->save();
+
+                    WalletHistory::create([
+                        'user_id' => $userId,
+                        'wallet_id' => $wallet->id,
+                        'amount' => $amount,
+                        'balance' => $wallet->balance,
+                        'type' => WalletHistory::TYPE['ADDED'],
+                        'comission_type' =>  WalletHistory::COMISSION_TYPES['DIRECT'],
+                        'created_at' =>  $user->approved_at,
+                        'updated_at' =>  $user->approved_at,
+                    ]);
+                    DB::commit();
+
+                    Log::debug('addDirectComission : fix : ' . $userId . ' ' .   $amount);
+                } catch (Exception $e) {
+                    DB::rollback();
+                    Log::debug('user_id ' . $userId . ' ' . $e->getMessage());
+                }
+            }
+        }
+
+        return "success";
     }
 }

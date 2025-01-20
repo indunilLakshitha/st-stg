@@ -178,6 +178,7 @@ class Requests extends Component
                 abort(404);
 
             $ref_user = User::find($user->referrer_id);
+
             if ($ref_user->er_status == User::USER_STATUS['ER']) {
 
                 /**
