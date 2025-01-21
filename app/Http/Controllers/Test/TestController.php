@@ -107,6 +107,7 @@ class TestController extends Controller
 
     public function fixCommission()
     {
+        return;
         $users = User::where('approved_at', '>', Carbon::parse('2025-01-17 23:44:30'))
             ->where('type', User::USER_TYPE['MAIN'])
             ->select('approved_at', 'id', 'referrer_id')->get();
