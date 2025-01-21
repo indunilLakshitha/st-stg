@@ -109,7 +109,7 @@ class TestController extends Controller
     {
         $users = User::where('approved_at', '>', Carbon::parse('2025-01-17 23:44:30'))
             ->where('type', User::USER_TYPE['MAIN'])
-            ->select('approved_at', 'id')->get();
+            ->select('approved_at', 'id', 'referrer_id')->get();
 
         $walletDetails = WalletHistory::where('comission_type', WalletHistory::COMISSION_TYPES['DIRECT'])
             ->where('created_at', '>', Carbon::parse('2025-01-17 23:44:30'))
@@ -118,28 +118,28 @@ class TestController extends Controller
 
 
         foreach ($users as $user) {
-            if (!in_array($user->id, $walletDetails)) {
+            if (!in_array($user->referrer_id, $walletDetails)) {
 
                 try {
 
                     DB::beginTransaction();
-                    $userId = $user->id;
 
                     $appliedCourse = UserPuchasedCourse::with('course')->where('user_id', $user->id)
                         ->where('type', UserPuchasedCourse::TYPE['REFERRAL'])
                         ->first();
                     $amount = $appliedCourse->course?->referer_commission;
 
-                    $wallet = Wallet::where('user_id', $userId)->first();
+                    $ref_id = $user->referrer_id;
+                    $wallet = Wallet::where('user_id', $ref_id)->first();
                     if (!isset($wallet)) {
                         $wallet = new Wallet();
-                        $wallet->user_id = $userId;
+                        $wallet->user_id = $ref_id;
                     }
                     $wallet->balance += $amount;
                     $wallet->save();
 
                     WalletHistory::create([
-                        'user_id' => $userId,
+                        'user_id' => $ref_id,
                         'wallet_id' => $wallet->id,
                         'amount' => $amount,
                         'balance' => $wallet->balance,
@@ -150,10 +150,10 @@ class TestController extends Controller
                     ]);
                     DB::commit();
 
-                    Log::debug('addDirectComission : fix : ' . $userId . ' ' .   $amount);
+                    Log::debug('addDirectComission : fix : ' . $user->id . ' ' . $ref_id . ' ' .   $amount);
                 } catch (Exception $e) {
                     DB::rollback();
-                    Log::debug('user_id ' . $userId . ' ' . $e->getMessage());
+                    Log::debug('user_id ' . $user->id . ' ' . $e->getMessage());
                 }
             }
         }
