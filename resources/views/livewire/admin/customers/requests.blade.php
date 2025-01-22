@@ -85,10 +85,13 @@
                         <div class="card-header">
                             {{-- <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a> --}}
                         </div>
+                        <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search'
+                            wire:input='filter' wire:change='filter()' placeholder="Search here...">
+
                     </div>
                     <div class="card-table table-responsive">
 
-                        <table id="zeroConfig" class="table mb-0">
+                        <table class="table mb-0">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -97,8 +100,7 @@
                                     <th>Referer</th>
                                     <th>Assigned To</th>
                                     <th>Reg Date</th>
-                                    <th>Contact No</th>
-                                    <th>Selected Course</th>
+                                    <th class="wd">Selected Course</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -112,9 +114,8 @@
                                         <td>{{ $user->assigned_user_id_on_approval . ' ' . $user->assigned_user_side_on_approval }}
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($user->created_at)->format('Y m d') }}</td>
-                                        <td>{{ $user->mobile_no }}</td>
 
-                                        <td><select class="form-select"
+                                        <td ><select class="form-select"
                                                 wire:model="user_selected_courses.{{ $user->id }}"
                                                 id="{{ $user->id }}" required
                                                 wire:change='changeCourseOfUser({{ $user->id }})'>
@@ -166,17 +167,46 @@
                                     <th>Referer</th>
                                     <th>Assigned To</th>
                                     <th>Reg Date</th>
-                                    <th>Contact No</th>
                                     <th>Selected Course</th>
                                     <th>ACTION</th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
+                    <div id="pg_id">
+
+                        {{ $customers->links() }}
+                    </div>
                 </div>
             </div>
             <!-- End:: Zero Config -->
         </div>
+        <style>
+            #pg_id nav svg {
+                width: 20px !important;
+            }
+
+            #pg_id nav .flex {
+                display: none;
+            }
+
+            #pg_id nav .hidden {
+                display: flex !important;
+                align-items: center;
+                column-gap: 15px;
+                margin-top: 10px;
+                padding: 20px;
+
+            }
+
+            #pg_id nav .hidden p {
+                margin: 0px;
+            }
+
+            .wd {
+                width: 550px !important;
+            }
+        </style>
 </div>
 
 <script>

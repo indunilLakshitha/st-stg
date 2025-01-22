@@ -154,8 +154,8 @@
                                                     class="form-input-field w-input" maxlength="256" name="email-2"
                                                     data-name="Email 2" placeholder="Enter your password"
                                                     id="email-2" required="">
-                                                {{-- <a id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a34a128d"
-                                                    href="#" class="_14-px-text">Forget password?</a> --}}
+                                                <a id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a34a128d"
+                                                    href="{{ route('password.request') }}" class="_14-px-text">Forget password?</a>
                                             </div>
                                             <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b2-a34a128d"
                                                 class="register-margin-top is-login"><input type="submit"

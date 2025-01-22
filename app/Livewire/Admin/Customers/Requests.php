@@ -21,25 +21,35 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Requests extends Component
 {
-    use PathTrait, ComissionTrait, SMSTrait;
+    use PathTrait, ComissionTrait, SMSTrait, WithPagination;
 
-    public $customers;
-    public $payment_type, $assigned_to, $assigned_user_side, $selected_user_id;
+    // public $customers;
+    public $payment_type, $assigned_to, $assigned_user_side, $selected_user_id, $search;
 
     public $courses;
     public $selected_course, $user_selected_courses = [];
     public $course_list = [];
     public $ignore = true;
 
+    protected $queryString = ['search', 'selected_course'];
+
     public function mount()
     {
         if (!CheckAdmin::check())
             abort(403);
 
-        $this->customers = User::with('referrer')
+
+        $this->courses = Course::all();
+        // $this->courses = Course::where('has_website', 1)->get();
+    }
+
+    public function render()
+    {
+        $customers = User::with('referrer')
             ->leftjoin('user_puchased_courses', 'user_puchased_courses.user_id', 'users.id')
             ->leftjoin('courses', 'courses.id', 'user_puchased_courses.course_id')
             ->where('users.approved_by_admin', false)
@@ -47,14 +57,30 @@ class Requests extends Component
             ->whereNot('users.approved_referrer_id', NULL)
             ->where('users.approved_by_referrer', true)
             ->where('users.type', User::USER_TYPE['MAIN'])
+            ->when($this->search, function ($q) {
+                if (strlen($this->search) >= 3) {
+                    return $q->where('users.first_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.last_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.id', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.nic', 'like', '%' . $this->search . '%');
+                }
+            })
+            ->when($this->selected_course, function ($q) {
+                $q->where('user_puchased_courses.course_id', $this->selected_course);
+            })
             ->select(
                 'users.id',
+                'users.created_at',
                 'users.reg_no',
                 'users.mobile_no',
                 'users.er_status',
                 'users.payment_status',
                 'users.referrer_id',
                 'users.name',
+                'users.last_name',
+                'users.first_name',
+                'users.nic',
                 'users.assigned_user_id_on_approval',
                 'users.assigned_user_side_on_approval',
                 'users.status',
@@ -62,18 +88,12 @@ class Requests extends Component
                 'user_puchased_courses.course_id',
                 'courses.name as course_name',
             )
-            ->get();
+            ->paginate(10);
 
-        foreach ($this->customers as $user) {
+        foreach ($customers as $user) {
             array_push($this->user_selected_courses, [$user->id => $user->course_id]);
         }
-        $this->courses = Course::all();
-        // $this->courses = Course::where('has_website', 1)->get();
-    }
-
-    public function render()
-    {
-        return view('livewire.admin.customers.requests');
+        return view('livewire.admin.customers.requests', ['customers' => $customers]);
     }
 
     public function delete($id)
@@ -396,59 +416,59 @@ class Requests extends Component
 
     public function filter()
     {
-        $this->ignore = false;
-        if ($this->selected_course == 0) {
+        // $this->ignore = false;
+        // if ($this->selected_course == 0) {
 
-            $this->customers = User::with('referrer')
-                ->leftjoin('user_puchased_courses', 'user_puchased_courses.user_id', 'users.id')
-                ->leftjoin('courses', 'courses.id', 'user_puchased_courses.course_id')
-                ->where('users.approved_by_admin', false)
-                ->where('users.is_admin', false)
-                ->whereNot('users.approved_referrer_id', NULL)
-                ->where('users.approved_by_referrer', true)
-                ->where('users.type', User::USER_TYPE['MAIN'])
-                ->select(
-                    'users.id',
-                    'users.reg_no',
-                    'users.mobile_no',
-                    'users.er_status',
-                    'users.payment_status',
-                    'users.referrer_id',
-                    'users.name',
-                    'users.status',
-                    'user_puchased_courses.user_id',
-                    'user_puchased_courses.course_id',
-                    'courses.name as course_name',
-                )
-                ->get();
-        } else {
+        //     $this->customers = User::with('referrer')
+        //         ->leftjoin('user_puchased_courses', 'user_puchased_courses.user_id', 'users.id')
+        //         ->leftjoin('courses', 'courses.id', 'user_puchased_courses.course_id')
+        //         ->where('users.approved_by_admin', false)
+        //         ->where('users.is_admin', false)
+        //         ->whereNot('users.approved_referrer_id', NULL)
+        //         ->where('users.approved_by_referrer', true)
+        //         ->where('users.type', User::USER_TYPE['MAIN'])
+        //         ->select(
+        //             'users.id',
+        //             'users.reg_no',
+        //             'users.mobile_no',
+        //             'users.er_status',
+        //             'users.payment_status',
+        //             'users.referrer_id',
+        //             'users.name',
+        //             'users.status',
+        //             'user_puchased_courses.user_id',
+        //             'user_puchased_courses.course_id',
+        //             'courses.name as course_name',
+        //         )
+        //         ->get();
+        // } else {
 
 
 
-            $this->customers = User::with('referrer')
-                ->leftjoin('user_puchased_courses', 'user_puchased_courses.user_id', 'users.id')
-                ->leftjoin('courses', 'courses.id', 'user_puchased_courses.course_id')
-                ->where('user_puchased_courses.course_id', $this->selected_course)
-                ->where('users.approved_by_admin', false)
-                ->where('users.is_admin', false)
-                ->whereNot('users.approved_referrer_id', NULL)
-                ->where('users.approved_by_referrer', true)
-                ->where('users.type', User::USER_TYPE['MAIN'])
-                ->select(
-                    'users.id',
-                    'users.reg_no',
-                    'users.mobile_no',
-                    'users.er_status',
-                    'users.payment_status',
-                    'users.referrer_id',
-                    'users.name',
-                    'users.status',
-                    'user_puchased_courses.user_id',
-                    'user_puchased_courses.course_id',
-                    'courses.name as course_name',
-                )
-                ->get();
-        }
+        //     $this->customers = User::with('referrer')
+        //         ->leftjoin('user_puchased_courses', 'user_puchased_courses.user_id', 'users.id')
+        //         ->leftjoin('courses', 'courses.id', 'user_puchased_courses.course_id')
+        //         ->where('user_puchased_courses.course_id', $this->selected_course)
+        //         ->where('users.approved_by_admin', false)
+        //         ->where('users.is_admin', false)
+        //         ->whereNot('users.approved_referrer_id', NULL)
+        //         ->where('users.approved_by_referrer', true)
+        //         ->where('users.type', User::USER_TYPE['MAIN'])
+        //         ->select(
+        //             'users.id',
+        //             'users.reg_no',
+        //             'users.mobile_no',
+        //             'users.er_status',
+        //             'users.payment_status',
+        //             'users.referrer_id',
+        //             'users.name',
+        //             'users.status',
+        //             'user_puchased_courses.user_id',
+        //             'user_puchased_courses.course_id',
+        //             'courses.name as course_name',
+        //         )
+        //         ->get();
+        // }
     }
 
     public function changeCourseOfUser($userId)
