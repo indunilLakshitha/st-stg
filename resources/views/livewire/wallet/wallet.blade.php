@@ -18,20 +18,24 @@
                     </nav>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                    @if (Auth::user()->type == 'M')
-                        <button type="button" class="btn btn-md btn-primary d-block request" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" id="btn_withdraw">
-                            <span class="ms-2 ">WITHDRAW</span>
-                        </button>
+                    <p class="color-warning">Withdrawal is Temporarily not Avaiilable
+                    </p>
+                    @if (!$isDisabled)
+                        @if (Auth::user()->type == 'M')
+                            <button type="button" class="btn btn-md btn-primary d-block request" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" id="btn_withdraw">
+                                <span class="ms-2 ">WITHDRAW</span>
+                            </button>
+                        @endif
                     @endif
                 </div>
 
-
-                <button type="button" class="btn btn-md btn-primary d-block request d-none" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal2" id="btn_otp">
-                    <span class="ms-2 ">WITHDRAW</span>
-                </button>
-
+                @if (!$isDisabled)
+                    <button type="button" class="btn btn-md btn-primary d-block request d-none" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2" id="btn_otp">
+                        <span class="ms-2 ">WITHDRAW</span>
+                    </button>
+                @endif
 
             </div>
         </div>
