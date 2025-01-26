@@ -23,6 +23,7 @@ class Wallet extends Component
         $date_to;
     public $bank_details = null;
     public $referenceId = null, $otp_number;
+    public $isDisabled = true;
 
     public function mount()
     {
@@ -48,6 +49,7 @@ class Wallet extends Component
 
     public function sendOtp()
     {
+
         $this->validate([
             'amount_requesting' => 'required|numeric|not_regex:/[@#$%^&*();><]/'
         ]);
