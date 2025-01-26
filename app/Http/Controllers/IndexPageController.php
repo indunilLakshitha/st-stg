@@ -65,6 +65,16 @@ class IndexPageController extends Controller
 
     public function thankYou($user_id)
     {
-        return view('home.thank-you',compact('user_id'));
+        return view('home.thank-you', compact('user_id'));
+    }
+
+    public function termsNConditn()
+    {
+        return view('home.termsNc');
+    }
+
+    public function pp()
+    {
+        return view('home.privacy-policy');
     }
 }

@@ -12,46 +12,53 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RegistrationRequest extends Component
 {
-    public $customers;
-    public $selected_course, $courses;
+    use WithPagination;
+
+    public $selected_course, $courses, $search;
+    protected $queryString = ['selected_course', 'search'];
 
     public function mount()
     {
-        $this->customers = User::with('purchase.course')->where('approved_by_admin', false)
-            ->where('parent_id', NULL)
-            ->where('referrer_id', '!=', NULL)
-            ->where('assigned_user_id', NULL)
-            ->where('approved_referrer_id', NULL)
-            ->where('approved_by_referrer', false)
-            ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name','created_at')
-            ->get();
+
         $this->courses = Course::all();
     }
 
     public function filter()
     {
 
-        if ($this->selected_course == 0) {
-            $this->customers = User::with('purchase.course')
-                ->where('approved_by_admin', false)
-                ->where('parent_id', NULL)
-                ->where('referrer_id', '!=', NULL)
-                ->where('assigned_user_id', NULL)
-                ->where('approved_referrer_id', NULL)
-                ->where('approved_by_referrer', false)
-                ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name','created_at')
-                ->get();
-
-            return;
-        }
     }
 
     public function render()
     {
-        return view('livewire.admin.customers.registration-request');
+        $customers = User::with('purchase.course')->where('approved_by_admin', false)
+            ->where('parent_id', NULL)
+            ->where('referrer_id', '!=', NULL)
+            ->where('assigned_user_id', NULL)
+            ->where('approved_referrer_id', NULL)
+            ->where('approved_by_referrer', false)
+            ->select('id', 'reg_no', 'mobile_no', 'payment_status', 'referrer_id', 'name', 'created_at')
+            ->when($this->selected_course, function ($q) {
+                return $q->whereHas('purchase.course', function ($query) {
+                    $query->where('id', $this->selected_course);
+                });
+            })
+            ->when($this->search, function ($q) {
+                if (strlen($this->search) >= 3) {
+                    return $q->where('users.first_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.last_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.name', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.id', 'like', '%' . $this->search . '%')
+                        ->orWhere('users.nic', 'like', '%' . $this->search . '%');
+                }
+            })
+            ->orderBy('id', 'DESC')
+            ->paginate(20);
+
+        return view('livewire.admin.customers.registration-request', ['customers' => $customers]);
     }
 
     public function delete($id)

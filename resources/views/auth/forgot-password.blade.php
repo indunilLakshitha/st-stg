@@ -38,45 +38,11 @@
                 <div data-animation="over-left" data-collapse="medium" data-duration="400" data-easing="ease"
                     data-easing2="ease" role="banner" class="navbar-container w-nav">
                     <div class="navbar-wrapper">
-                        <a href="index.html" class="navbar-brand w-nav-brand"><img loading="lazy"
+                        <a href="{{ route('index') }}" class="navbar-brand w-nav-brand"><img loading="lazy"
                                 src="{{ asset('home/images/Equest-logo.svg') }}" alt="Brand Logo"
                                 class="brand-logo"></a>
                         <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
-                            <ul role="list" class="nav-menu w-list-unstyled">
-                                <li class="nav-mobile-brand">
-                                    <a href="#" class="navbar-brand w-nav-brand"><img loading="lazy"
-                                            src="{{ asset('home/images/Equest-logo.svg') }}" alt="Brand Logo"
-                                            class="brand-logo"></a>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="index.html" class="nav-menu-link">Home</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="about-us.html" class="nav-menu-link">About Us</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="courses.html" class="nav-menu-link">Course</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="our-team.html" class="nav-menu-link">Our Team</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="contact-us.html" class="nav-menu-link">Contact Us</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="nav-button-block">
-                                <a href="contact-us.html" class="nav-menu-button w-button">Enroll Now</a>
-                            </div>
+                            @include('home.common.nav_links')
                         </nav>
                         <div class="menu-button w-nav-button">
                             <div class="w-icon-nav-menu"></div>
@@ -113,22 +79,28 @@
                                     </div>
                                     <div class="contact2_form-block w-form">
                                         <form id="wf-form-Registration-Form" name="wf-form-Registration-Form"
-                                            data-name="Registration Form" class="contact2_form"
-                                            method="POST" action="{{ route('password.email') }}"
+                                            data-name="Registration Form" class="contact2_form" method="POST"
+                                            action="{{ route('forgotPassword.notify') }}"
                                             data-wf-page-id="6780ec5a92222feda1dd8a6d"
                                             data-wf-element-id="b95a6cd3-528c-a887-18c6-53b0075de7a7">
                                             @csrf
+                                            @if ($errors->has('error'))
+                                                <div style="color: red">
+                                                    {{ $errors->first('error') }}
+                                                </div>
+                                            @endif
                                             <div class="form_field-wrapper"><label for="email-3"
                                                     class="form_field-label">User ID</label><input
-                                                    class="form-input-field w-input" maxlength="256" name="email-3"
-                                                    data-name="Email 3" placeholder="Enter your user ID"
-                                                    type="number" id="email-3" required=""></div>
+                                                    class="form-input-field w-input" maxlength="256" name="id"
+                                                    data-name="Email 3" placeholder="Enter your user ID" type="number"
+                                                    id="email-3" value="{{ old('id') }}" required=""></div>
                                             <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7ac-a1dd8a6d"
                                                 class="form_field-wrapper"><label for="email-2"
-                                                    class="form_field-label">Email</label><input
+                                                    class="form_field-label">Phone Number</label><input
                                                     class="form-input-field w-input" maxlength="256"
-                                                    data-name="Email 2" placeholder="Enter your email"
-                                                    type="email" name="email"  required="">
+                                                    value="{{ old('mobile') }}" data-name="Email 2"
+                                                    placeholder="Enter your Contact No" type="number" name="mobile"
+                                                    required="">
                                                 <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a1dd8a6d"
                                                     class="_14-px-text">Still Need Help? <a
                                                         href="c{{ route('contactUs') }}">Contact Us</a>
@@ -191,7 +163,7 @@
                             <div class="footer-main-block">
                                 <div id="w-node-_1e83ad58-3581-5f38-e940-99c6d1baba99-d1baba8b"
                                     class="footer-about-wrapper">
-                                    <a href="index.html" class="footer-brand w-inline-block"><img width="86"
+                                    <a href="{{ route('index') }}" class="footer-brand w-inline-block"><img width="86"
                                             loading="lazy" alt="Brand Logo"
                                             src="{{ asset('home/images/Equest-logo-white.svg') }}"
                                             class="footer-brand-logo"></a>
@@ -249,8 +221,8 @@
                             <div class="footer-column">
                                 <div class="footer-heading">Other Pages</div>
                                 <div class="footer-link-wrapper">
-                                    <a href="terms-and-conditions.html" class="footer-link">Terms and Conditions</a>
-                                    <a href="privacy-policy.html" class="footer-link">Privacy Policy </a>
+                                    <a href="{{ route('tNc') }}" class="footer-link">Terms and Conditions</a>
+                                    <a href="{{ route('pp') }}" class="footer-link">Privacy Policy </a>
                                 </div>
                             </div>
                         </div>

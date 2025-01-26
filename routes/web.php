@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DepositedListController;
+use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Admin\OrderHistoryController;
 use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\SettingControlelr;
@@ -50,23 +51,40 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/**
+ * User Regoster Section
+ */
 Route::get('/register', [IndexPageController::class, 'register'])->name('register');
 Route::get('/register/{referral_id}', [IndexPageController::class, 'coursesWithReferrel'])->name('home.courseWithRef');
 Route::get('/register/{referral_id}/{course_id}', [IndexPageController::class, 'registerWithRef'])->name('home.registerWithRef');
 Route::get('/checkout/{user_id}', [IndexPageController::class, 'checkout'])->name('home.checkout');
-// Route::get('/register', [CustomerRegisterController::class, 'register'])->name('register');
-// Route::get('/register/{referral_id}', [IndexPageController::class, 'coursesWithReferrel'])->name('home.courseWithRef');
-// Route::get('/register/{referral_id}', [CustomerRegisterController::class, 'registerWithRef'])->name('registerWithRef');
 
 Route::get('/', [IndexPageController::class, 'index'])->name('index');
 Route::get('/courses', [IndexPageController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}/register', [IndexPageController::class, 'regWithcourse'])->name('regWithcourse');
 
+
+/**
+ * basic Pages Section
+ */
 Route::get('/about-us', [IndexPageController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/our-team', [IndexPageController::class, 'ourTeam'])->name('ourTeam');
 Route::get('/contact-us', [IndexPageController::class, 'contactUs'])->name('contactUs');
 Route::get('/thank-you/{user_id}', [IndexPageController::class, 'thankYou'])->name('thankYou');
-// Route::get('/courses/{referral_id}', [IndexPageController::class, 'coursesWithReferrel'])->name('courses.coursesWithReferrel');
+Route::get('/terms-and-conditions', [IndexPageController::class, 'termsNConditn'])->name('tNc');
+Route::get('/privacy-policy', [IndexPageController::class, 'pp'])->name('pp');
+
+/**
+ * Forgot Password Section
+ */
+Route::prefix('forgot-password')->name('forgotPassword.')->group(function () {
+    Route::post('/notify', [ForgotPasswordController::class, 'notify'])->name('notify');
+    Route::get('/verify-otp/{ref_no}', [ForgotPasswordController::class, 'verifyView'])->name('verifyView');
+    Route::post('/verify', [ForgotPasswordController::class, 'verify'])->name('verify');
+    Route::get('/change/{ref_id}', [ForgotPasswordController::class, 'changeView'])->name('changeView');
+    Route::post('/change', [ForgotPasswordController::class, 'change'])->name('change');
+});
+
 
 Route::middleware(['auth:web', 'noindex'])->prefix('dashboard')->group(function () {
 
@@ -181,3 +199,4 @@ Route::middleware(['auth:web', 'noindex'])->prefix('dashboard')->group(function 
 // Route::get('/test/sms-test/sendMSG', [TestController::class, 'sendMSG']);
 // Route::get('/trnsfer/transferDummyCommissions', [TestController::class, 'transferDummyCommission']);
 // Route::get('/fix/commissions', [TestController::class, 'fixCommission']);
+Route::get('/fix/points', [TestController::class, 'fixPoints']);

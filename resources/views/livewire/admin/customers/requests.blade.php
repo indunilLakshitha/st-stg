@@ -100,7 +100,7 @@
                                     <th>Referer</th>
                                     <th>Assigned To</th>
                                     <th>Reg Date</th>
-                                    <th class="wd">Selected Course</th>
+                                    <th>Selected Course</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -115,7 +115,7 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($user->created_at)->format('Y m d') }}</td>
 
-                                        <td ><select class="form-select"
+                                        <td><select class="form-select"
                                                 wire:model="user_selected_courses.{{ $user->id }}"
                                                 id="{{ $user->id }}" required
                                                 wire:change='changeCourseOfUser({{ $user->id }})'>
@@ -203,8 +203,13 @@
                 margin: 0px;
             }
 
-            .wd {
-                width: 550px !important;
+            .card-table .table thead tr th:nth-child(7) {
+                min-width: 400px;
+
+            }
+            .card-table .table thead tr th:nth-child(2) {
+                max-width: 150px;
+
             }
         </style>
 </div>

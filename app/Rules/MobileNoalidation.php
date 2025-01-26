@@ -14,7 +14,8 @@ class MobileNoalidation implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $valid = false;
+        $valid = true;
+        // $valid = false;
         if (mb_strlen($value) == 10) {
             $valid = true;
         }

@@ -51,7 +51,7 @@ class User extends Authenticatable
         'A2' => 'DUMMY',
 
     ];
-    const GENDER_LIST = ['Male', 'Female','Other'];
+    const GENDER_LIST = ['Male', 'Female', 'Other'];
 
     const MAIN = 'M';
     const LEFT = 'A1';
@@ -187,6 +187,16 @@ class User extends Authenticatable
     public function bank(): HasOne
     {
         return $this->hasOne(UserBankDetail::class, 'user_id', 'id');
+    }
+
+    public function city(): HasOne
+    {
+        return $this->hasOne(DashboardCity::class, 'id', 'dashboard_city_id');
+    }
+
+    public function district(): HasOne
+    {
+        return $this->hasOne(DashboardDistrict::class, 'id', 'dashboard_district_id');
     }
 
     public function getChildAttribute()

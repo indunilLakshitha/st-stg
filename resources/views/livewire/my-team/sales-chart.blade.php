@@ -47,7 +47,56 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="exampleModal2" aria-labelledby="exampleModal2Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabe2">
+                                {{ $selected['name'] }}
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-body d-flex">
+                                <div class="col-3">
+                                    <div class="avatar avatar-md rounded flex-shrink-0 ml-5">
+                                        <img src="{{ asset('assets/images/avatar/1.png') }}" alt=""
+                                            class="img-fluid rounded" />
+                                    </div>
+                                    <dt class="mb-3 fs-15">{{ $selected['id'] }}</dt>
+                                    <dl class="dl-horizontal mb-0 hstack">
+                                        <dt class="mb-1">a1 :{{ $selected['a1'] }}</dt>
+                                        <dt>a2 :{{ $selected['a2'] }}</dt>
 
+                                    </dl>
+                                </div>
+                                <div class="col">
+                                    <dl class="dl-horizontal mb-0 hstack">
+                                        <dt>Contact No :</dt>
+                                        <dd>{{ $selected['contact'] }}</dd>
+
+                                        <dt>District :</dt>
+                                        <dd>{{ $selected['district'] }}</dd>
+                                        <dt>City :</dt>
+                                        <dd>{{ $selected['city'] }}</dd>
+                                        <dt>Agent 1 :</dt>
+                                        <dd>{{ $selected['agent_1'] }}</dd>
+                                        <dt>Agent 2 :</dt>
+                                        <dd>{{ $selected['agent_2'] }}</dd>
+                                    </dl>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="hidden" class="d-none" id="showMdl" data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"></button>
             <!-- End:: Filter -->
             <div class="col-6">
                 @if (session()->has('message'))
@@ -71,6 +120,7 @@
                         </div>
 
                     </div>
+
                     <div class="card-table table-responsive d-flex ">
                         <div class="table-responsive  col-6 border-right-sales-chart ">
                             <table class="table mb-0">
@@ -104,10 +154,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0);" class="d-flex gap-3 align-items-center">
+
+                                                <a href="javascript:void(0);" class="d-flex gap-3 align-items-center"
+                                                    wire:click='setSelectedUser({{ $leftAc->id }})'>
 
                                                     <div class="flex-shrink-0">
-                                                        <div>{{ $leftAc->first_name . ' ' . $leftAc->last_name }}</div>
+                                                        <div>{{ $leftAc->first_name . ' ' . $leftAc->last_name }}
+                                                        </div>
 
                                                     </div>
                                                 </a>
@@ -156,7 +209,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0);" class="d-flex gap-3 align-items-center">
+                                                <a href="javascript:void(0);" class="d-flex gap-3 align-items-center"
+                                                    wire:click='setSelectedUser({{ $rightAc->id }})'>
 
                                                     <div class="flex-shrink-0">
                                                         <div>{{ $rightAc->first_name . ' ' . $rightAc->last_name }}
@@ -224,5 +278,15 @@
             .table-responsive.col-6.border-right-sales-chart {
                 border-right: 5px solid var(--expo-border-color);
             }
+
+            .fs-12 {
+                font-size: 1rem !important;
+            }
         </style>
 </div>
+
+<script>
+    window.addEventListener('show_modal', function(e) {
+        document.getElementById('showMdl').click();
+    });
+</script>

@@ -81,8 +81,8 @@
                         <div class="footer-column">
                             <div class="footer-heading">Other Pages</div>
                             <div class="footer-link-wrapper">
-                                <a href="terms-and-conditions.html" class="footer-link">Terms and Conditions</a>
-                                <a href="privacy-policy.html" class="footer-link">Privacy Policy </a>
+                                <a href="{{ route('tNc') }}" class="footer-link">Terms and Conditions</a>
+                                <a href="{{ route('pp') }}" class="footer-link">Privacy Policy </a>
                             </div>
                         </div>
                     </div>
