@@ -161,4 +161,8 @@ class TestController extends Controller
 
         return "success";
     }
+
+    public function disablePoints(){
+        
+    }
 }
