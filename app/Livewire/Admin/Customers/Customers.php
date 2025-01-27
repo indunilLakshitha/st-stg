@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Customers;
 
 use App\Models\Course;
 use App\Models\User;
+use App\Models\UserPuchasedCourse;
+use App\Usecases\Point\PointsToReferralUsecase;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -186,8 +188,31 @@ class Customers extends Component
 
         if (Auth::user()->is_admin) {
             $customer->er_status = User::USER_STATUS['FULL'];
+            $customer->payment_status = User::USER_STATUS['FULL'];
             $customer->save();
 
+
+            $appliedCourse = UserPuchasedCourse::with('course')->where('user_id', $customer->id)
+                ->where('type', UserPuchasedCourse::TYPE['REFERRAL'])
+                ->first();
+
+            if (!isset($appliedCourse))
+                abort(404);
+
+
+
+            if (
+                $customer->points_disabled == 0 &&
+                $customer->payment_status == User::PAYMENT_STATUS['FULL'] &&
+                $customer->er_status == User::PAYMENT_STATUS['FULL']
+            ) {
+
+
+                /**
+                 * Add points to Referrals
+                 */
+                (new PointsToReferralUsecase())->handle(user: $customer, point: $appliedCourse->course?->course_point);
+            }
             // session()->flash('message', 'User successfully Unblocked.');
             $this->dispatch('success_alert', ['title' => 'User successfully Full Activated']);
             return $this->mount();

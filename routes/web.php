@@ -181,3 +181,4 @@ Route::middleware(['auth:web', 'noindex'])->prefix('dashboard')->group(function 
 // Route::get('/test/sms-test/sendMSG', [TestController::class, 'sendMSG']);
 // Route::get('/trnsfer/transferDummyCommissions', [TestController::class, 'transferDummyCommission']);
 // Route::get('/fix/commissions', [TestController::class, 'fixCommission']);
+Route::get('/set/point-disable', [TestController::class, 'disablePoints']);

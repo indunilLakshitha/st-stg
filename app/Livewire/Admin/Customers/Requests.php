@@ -190,11 +190,16 @@ class Requests extends Component
                 );
             }
 
-            /**
-             * Add points to Referrals
-             */
-            (new PointsToReferralUsecase())->handle(user: $user, point: $appliedCourse->course?->course_point);
-
+            if (
+                $user->points_disabled == 0 &&
+                $user->payment_status == User::PAYMENT_STATUS['FULL'] &&
+                $user->er_status == User::PAYMENT_STATUS['FULL']
+            ) {
+                /**
+                 * Add points to Referrals
+                 */
+                (new PointsToReferralUsecase())->handle(user: $user, point: $appliedCourse->course?->course_point);
+            }
             $approvedHistory = ApproveHistory::where('user_id', $user->id)->first();
             if (isset($approvedHistory)) {
                 $approvedHistory->approved_admin_id = $user->approved_by;
