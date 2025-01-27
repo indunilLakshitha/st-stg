@@ -116,7 +116,7 @@
                             <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search'
                                 wire:input='filter' wire:change='filter()' placeholder="Search here...">
 
-                            <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a>
+                            {{-- <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a> --}}
                             {{-- </div> --}}
                         </div>
                     </div>
