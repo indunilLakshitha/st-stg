@@ -162,7 +162,20 @@ class TestController extends Controller
         return "success";
     }
 
-    public function disablePoints(){
-        
+    public function disablePoints()
+    {
+        $users = User::where('er_status', User::PAYMENT_STATUS['HALF'])
+            ->where('payment_status', User::PAYMENT_STATUS['HALF'])
+            // ->where('type', User::USER_TYPE['MAIN'])
+            ->where('approved_by_admin', 1)
+            ->select('id', 'left_points', 'right_points', 'er_status', 'payment_status', 'path', 'points_disabled')
+            ->get();
+
+        foreach ($users as $user) {
+            $user->points_disabled = true;
+            $user->save();
+        }
+
+        return "DONE";
     }
 }
