@@ -192,8 +192,7 @@ class Requests extends Component
 
             if (
                 $user->points_disabled == 0 &&
-                $user->payment_status = User::PAYMENT_STATUS['FULL'] &&
-                $user->er_status = User::PAYMENT_STATUS['FULL']
+                $user->payment_status == User::PAYMENT_STATUS['FULL'] 
             ) {
                 /**
                  * Add points to Referrals

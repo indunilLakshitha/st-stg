@@ -199,12 +199,11 @@ class Customers extends Component
             if (!isset($appliedCourse))
                 abort(404);
 
-      
+
 
             if (
                 $customer->points_disabled == 0 &&
-                $customer->payment_status = User::PAYMENT_STATUS['FULL'] &&
-                $customer->er_status = User::PAYMENT_STATUS['FULL']
+                $customer->payment_status == User::PAYMENT_STATUS['FULL']
             ) {
 
 
