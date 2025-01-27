@@ -55,42 +55,7 @@
                                 src="{{ asset('home/images/Equest-logo.svg') }}" alt="Brand Logo"
                                 class="brand-logo"></a>
                         <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
-                            <ul role="list" class="nav-menu w-list-unstyled">
-                                <li class="nav-mobile-brand">
-                                    <a href="#" class="navbar-brand w-nav-brand"><img loading="lazy"
-                                            src="{{ asset('home/images/Equest-logo.svg') }}" alt="Brand Logo"
-                                            class="brand-logo"></a>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="{{ route('index') }}" class="nav-menu-link">Home</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="{{ route('aboutUs') }}" aria-current="page"
-                                            class="nav-menu-link w--current">About Us</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="{{ route('courses') }}" class="nav-menu-link">Courses</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="{{ route('ourTeam') }}" class="nav-menu-link">Our Team</a>
-                                    </div>
-                                </li>
-                                <li class="nav-menu-list">
-                                    <div class="nav-menu-link-wrapper">
-                                        <a href="{{ route('contactUs') }}" class="nav-menu-link">Contact Us</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="nav-button-block">
-                                <a href="{{ route('courses') }}" class="nav-menu-button w-button">Enroll Now</a>
-                            </div>
+                            @include('home.common.nav_links')
                         </nav>
                         <div class="menu-button w-nav-button">
                             <div class="w-icon-nav-menu"></div>
@@ -839,7 +804,8 @@
                                             <div class="our-team-card-info-block home-13">
                                                 <div class="our-team-card-info home-14">
                                                     <div class="our-team-card-name home-15">Romesh Samarakon</div>
-                                                    <div class="our-team-card-job-title home-16">Administrative Director</div>
+                                                    <div class="our-team-card-job-title home-16">Administrative
+                                                        Director</div>
                                                 </div>
                                                 <div class="our-team-card-link-block home-17">
                                                     <div class="link-icon home-18 w-embed"><svg
@@ -1059,8 +1025,8 @@
                             <div class="footer-main-block">
                                 <div id="w-node-_1e83ad58-3581-5f38-e940-99c6d1baba99-d1baba8b"
                                     class="footer-about-wrapper">
-                                    <a href="{{ route('courses') }}" class="footer-brand w-inline-block"><img width="86"
-                                            loading="lazy" alt="Brand Logo"
+                                    <a href="{{ route('courses') }}" class="footer-brand w-inline-block"><img
+                                            width="86" loading="lazy" alt="Brand Logo"
                                             src="{{ asset('home/images/Equest-logo-white.svg') }}"
                                             class="footer-brand-logo"></a>
                                     <p class="footer-about-paragraph">Ready to Start Your Entrepreneurial Journey?
@@ -1100,10 +1066,12 @@
                                     <div class="footer-heading">Quick Links</div>
                                     <div class="footer-link-block">
                                         <div class="footer-link-wrapper">
-                                            <a href="{{ route('index') }}" aria-current="page" class="footer-link w--current">Home</a>
+                                            <a href="{{ route('index') }}" aria-current="page"
+                                                class="footer-link w--current">Home</a>
                                             <a href="{{ route('aboutUs') }}" class="footer-link">About</a>
                                             <a href="{{ route('courses') }}" class="footer-link">Courses</a>
-                                            <a href="{{ route('marketplace.user.index') }}" class="footer-link">Marketplace</a>
+                                            <a href="{{ route('marketplace.user.index') }}"
+                                                class="footer-link">Marketplace</a>
                                         </div>
                                         <div class="footer-link-wrapper">
                                             <a href="{{ route('ourTeam') }}" class="footer-link">Our Team</a>
@@ -1114,8 +1082,9 @@
                                 <div class="footer-column">
                                     <div class="footer-heading">Other Pages</div>
                                     <div class="footer-link-wrapper">
-                                        <a href="terms-and-conditions.html" class="footer-link">Terms and Conditions</a>
-                                        <a href="privacy-policy.html" class="footer-link">Privacy Policy </a>
+                                        <a href="{{ route('tNc') }}" class="footer-link">Terms and
+                                            Conditions</a>
+                                        <a href="{{ route('pp') }}" class="footer-link">Privacy Policy </a>
                                     </div>
                                 </div>
                             </div>
@@ -1123,10 +1092,9 @@
                     </div>
                     <div class="footer-lower-block">
                         <div class="w-layout-blockcontainer container-default w-container">
-                            <div class="footer-copyright-text">Copyright © 2024 <a
-                                    href="{{ route('index') }}" target="_blank"
-                                    class="cc-text">Equest Institute of Higher Education</a>| Developed by <a
-                                    href="https://solluton.com/" target="_blank"
+                            <div class="footer-copyright-text">Copyright © 2024 <a href="{{ route('index') }}"
+                                    target="_blank" class="cc-text">Equest Institute of Higher Education</a>|
+                                Developed by <a href="https://solluton.com/" target="_blank"
                                     class="footer-copyright-link">Solluton</a>
                             </div>
                         </div>
@@ -1135,9 +1103,8 @@
             </div>
         </section>
     </main>
-    <a href="#top" class="scroll-to-top w-inline-block"><img
-            src="{{ asset('home/images/scroll-to-top.svg') }}" loading="lazy" alt="Scroll to Top Icon"
-            class="scroll-to-top-icon"></a>
+    <a href="#top" class="scroll-to-top w-inline-block"><img src="{{ asset('home/images/scroll-to-top.svg') }}"
+            loading="lazy" alt="Scroll to Top Icon" class="scroll-to-top-icon"></a>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6744125b4028f712efbe2a96"
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
     </script>

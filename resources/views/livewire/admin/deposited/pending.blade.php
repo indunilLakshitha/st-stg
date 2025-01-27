@@ -4,6 +4,48 @@
         <!--! End:: Breadcumb !-->
 
         <div class="edash-content-section row g-3 g-md-4">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <!--  -->
+                        <form action="#" class="form-group" id="repeaterAdvanced">
+                            <div data-repeater-list="repeater-advanced">
+                                <div data-repeater-item>
+                                    <div class="form-group row mb-4">
+                                        <div class="col-lg-2 mb-2 mb-md-0">
+                                            <label class="form-label">Status:</label>
+                                            <select class="form-select" wire:model='status' wire:change='filter()'>
+                                                <option value="0" class="d-none"> Select Status</option>
+                                                <option value="1"> REQUESTED</option>
+                                                <option value="2"> TRANSFERED</option>
+                                                <option value="3"> CANSELED</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-2 mb-2 mb-md-0">
+                                            <label class="form-label">From:</label>
+                                            <input class="form-control" type="date" wire:model='from'
+                                                wire:change='filter()'>
+                                        </div>
+                                        <div class="col-lg-2 mb-2 mb-md-0">
+                                            <label class="form-label">From:</label>
+                                            <input class="form-control" type="date" wire:model='to'
+                                                wire:change='filter()'>
+                                        </div>
+                                        {{-- <div class="col-lg-2 mb-2 mb-md-0 pt-1">
+                                            <button class="btn btn-md btn-soft-danger d-block mt-4"
+                                                wire:click="filter()">
+                                                <i class="fi fi-rr-search"></i>
+                                                <span class="ms-2">SEARCH</span>
+                                            </button>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="row  g-md-4">
                 <div class="col-lg-4">
                     <div class="card">
@@ -13,7 +55,8 @@
                                     <i class="fi fi-rr-chart-histogram"></i>
                                 </div>
                                 <div class="text-end">
-                                    <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}{{ number_format($total_withdrawal_requests, 2) }}</h4>
+                                    <h4 class="fs-18 fw-semibold">
+                                        {{ env('CURRENCY') }}{{ number_format($total_withdrawal_requests, 2) }}</h4>
                                     <span class="fs-13 text-muted">Total Withdrawal Requests</span>
                                 </div>
                             </div>
@@ -28,7 +71,8 @@
                                     <i class="fi fi-rr-stats"></i>
                                 </div>
                                 <div class="text-end">
-                                    <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}{{ number_format($total_pending_deposites, 2) }} </h4>
+                                    <h4 class="fs-18 fw-semibold">
+                                        {{ env('CURRENCY') }}{{ number_format($total_pending_deposites, 2) }} </h4>
                                     <span class="fs-13 text-muted">Total Pending Deposits</span>
                                 </div>
                             </div>
@@ -43,7 +87,8 @@
                                     <i class="fi fi-rr-sack-dollar"></i>
                                 </div>
                                 <div class="text-end">
-                                    <h4 class="fs-18 fw-semibold">{{env('CURRENCY')}}{{ number_format($total_deposites, 2) }}</h4>
+                                    <h4 class="fs-18 fw-semibold">
+                                        {{ env('CURRENCY') }}{{ number_format($total_deposites, 2) }}</h4>
                                     <span class="fs-13 text-muted"> Total Deposits</span>
                                 </div>
                             </div>
@@ -70,11 +115,12 @@
                     </div>
                     <div class="card-table table-responsive">
 
-                        <table id="dataTablesExport" class="table mb-0">
+                        <table class="table mb-0">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Mobile No</th>
                                     <th>Requested Amount</th>
                                     <th>Balance ( Rs )</th>
                                     <th>Requested At</th>
@@ -87,6 +133,7 @@
                                     <tr>
                                         <td>{{ $pending->id }}</td>
                                         <td>{{ $pending->user?->name }}</td>
+                                        <td>{{ $pending->user?->mobile_no }}</td>
                                         <td>{{ number_format($pending->amount, 2) }}</td>
                                         <td>{{ number_format($pending->wallet?->balance, 2) }}</td>
                                         <td>{{ $pending->requested_at }}</td>
@@ -145,15 +192,19 @@
                                                 APPROVE
                                             </button> --}}
 
-                                            <button class="btn btn-primary" wire:click='approve({{ $pending->id }})'
-                                                wire:confirm="Are you sure you want to Pay this?" type="button">
-                                                APPROVE
-                                            </button>
+                                            @if ($pending->status == 1)
+                                                <button class="btn btn-primary"
+                                                    wire:click='approve({{ $pending->id }})'
+                                                    wire:confirm="Are you sure you want to Pay this?" type="button">
+                                                    APPROVE
+                                                </button>
+
                                             <button class="btn btn-danger" wire:click='cansel({{ $pending->id }})'
                                                 wire:confirm="Are you sure you want to Cancel this Request?"
                                                 type="button">
                                                 CANCEL
                                             </button>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -165,6 +216,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Mobile No</th>
                                     <th>Requested Amount</th>
                                     <th>Balance (LKR)</th>
                                     <th>Requested At</th>
@@ -174,6 +226,10 @@
                             </tfoot>
                         </table>
                     </div>
+                    <div id="pg_id">
+
+                        {{ $pendings->links() }}
+                    </div>
                 </div>
             </div>
             <!-- End:: Zero Config -->
@@ -182,6 +238,27 @@
         <style>
             .remove-margin {
                 margin-bottom: 0 !important;
+            }
+
+            #pg_id nav svg {
+                width: 20px !important;
+            }
+
+            #pg_id nav .flex {
+                display: none;
+            }
+
+            #pg_id nav .hidden {
+                display: flex !important;
+                align-items: center;
+                column-gap: 15px;
+                margin-top: 10px;
+                padding: 20px;
+
+            }
+
+            #pg_id nav .hidden p {
+                margin: 0px;
             }
         </style>
 </div>

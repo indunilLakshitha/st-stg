@@ -85,13 +85,15 @@
                         <div class="card-header">
                             <h4 class="card-title">Commisions</h4>
                         </div>
+                        <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search'
+                            wire:input='filter' wire:change='filter()' placeholder="Search here...">
                         <div class="card-header">
                             <a href="{{ route('admin.commission.generate') }}"
                                 class="btn btn-md btn-primary">GENERATE</a>
                         </div>
                     </div>
                     <div class="card-table table-responsive">
-                        <table id="zeroConfig" class="table mb-0">
+                        <table class="table mb-0">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -153,8 +155,34 @@
                             </tfoot>
                         </table>
                     </div>
+                    <div id="pg_id">
+
+                        {{ $comissions->links() }}
+                    </div>
                 </div>
             </div>
             <!-- End:: Zero Config -->
         </div>
+        <style>
+            #pg_id nav svg {
+                width: 20px !important;
+            }
+
+            #pg_id nav .flex {
+                display: none;
+            }
+
+            #pg_id nav .hidden {
+                display: flex !important;
+                align-items: center;
+                column-gap: 15px;
+                margin-top: 10px;
+                padding: 20px;
+
+            }
+
+            #pg_id nav .hidden p {
+                margin: 0px;
+            }
+        </style>
 </div>

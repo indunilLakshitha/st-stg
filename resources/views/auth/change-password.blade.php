@@ -1,28 +1,16 @@
-<!DOCTYPE html><!--  Last Published: Sat Jan 11 2025 06:27:08 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="67800646d025f688a34a128d" data-wf-site="6744125b4028f712efbe2a96">
+<!DOCTYPE html>
+<!--  Last Published: Sat Jan 11 2025 06:27:08 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="6780ec5a92222feda1dd8a6d" data-wf-site="6744125b4028f712efbe2a96">
 
 <head>
     <meta charset="utf-8">
-    <title>Login | Equest Institute of Higher Education</title>
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        name="description">
-    <meta content="Login | Equest Institute of Higher Education" property="og:title">
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        property="og:description">
-    <meta
-        content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
+    <title>Forget Password</title>
+    <meta content="Forget Password" property="og:title">
+    <meta content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png"
         property="og:image">
-    <meta content="Login | Equest Institute of Higher Education" property="twitter:title">
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        property="twitter:description">
-    <meta
-        content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
+    <meta content="Forget Password" property="twitter:title">
+    <meta content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png"
         property="twitter:image">
-    <meta property="og:type" content="website">
-    <meta content="summary_large_image" name="twitter:card">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="{{ asset('home/css/normalize.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('home/css/webflow.css') }}" rel="stylesheet" type="text/css">
@@ -36,7 +24,7 @@
         }(window, document);
     </script>
     <link href="{{ asset('home/images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
-    <link href="{{ asset('home/images/webclip.png') }}" rel="apple-touch-icon">
+    <link href="i{{ asset('home/mages/webclip.png') }}" rel="apple-touch-icon">
     <style>
         a.w-webflow-badge {
             display: none !important;
@@ -69,65 +57,86 @@
                 <div class="section-gap is-registerform">
                     <div class="w-layout-blockcontainer container-default w-container">
                         <div class="home-about-wrapper">
-                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e2-a34a128d"
+                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e2-a1dd8a6d"
                                 class="home-about-image-block is-login"><img
                                     src="{{ asset('home/images/home-about-image.jpg') }}" loading="lazy"
-                                    sizes="(max-width: 479px) 94vw, (max-width: 681px) 95vw, (max-width: 991px) 647px, (max-width: 1279px) 440px, (max-width: 1439px) 542.5px, 646.890625px"
+                                    sizes="(max-width: 479px) 100vw, (max-width: 681px) 95vw, (max-width: 991px) 647px, (max-width: 1279px) 440px, (max-width: 1439px) 542.5px, 646.890625px"
                                     srcset="{{ asset('home/images/home-about-image-p-500.jpg') }} 500w, {{ asset('home/images/home-about-image.jpg') }} 647w"
                                     alt="Home About Image" class="home-about-image h-100"></div>
-                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e9-a34a128d"
+                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e9-a1dd8a6d"
                                 class="home-about-content-block is-login">
                                 <div class="contact-us-form-block">
                                     <div class="section-title-wrapper center is-low">
                                         <div class="overflow-hidden">
                                             <h2 data-w-id="b95a6cd3-528c-a887-18c6-53b0075de7a1"
                                                 style="-webkit-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-moz-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-ms-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform-style:preserve-3d"
-                                                class="section-title is-credintail">Login</h2>
+                                                class="section-title is-credintail">Add New Password</h2>
                                         </div>
                                         <div class="overflow-hidden">
                                             <p data-w-id="b95a6cd3-528c-a887-18c6-53b0075de7a4"
                                                 style="-webkit-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-moz-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-ms-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform-style:preserve-3d"
-                                                class="section-title-except">Please fill in all your credentials to log
-                                                in.</p>
+                                                class="section-title-except">Please fill details below.</p>
                                         </div>
                                     </div>
                                     <div class="contact2_form-block w-form">
-                                        <form method="POST" action="{{ route('login') }}"
-                                            id="wf-form-Registration-Form" name="wf-form-Registration-Form"
-                                            data-name="Registration Form" class="contact2_form"
-                                            data-wf-page-id="67800646d025f688a34a128d"
+                                        <form id="wf-form-Registration-Form" name="wf-form-Registration-Form"
+                                            data-name="Registration Form" class="contact2_form" method="POST"
+                                            action="{{ route('forgotPassword.change') }}"
+                                            data-wf-page-id="6780ec5a92222feda1dd8a6d"
                                             data-wf-element-id="b95a6cd3-528c-a887-18c6-53b0075de7a7">
-                                            @error('email')
-                                                <div style="color: red">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                             @csrf
                                             <div class="form_field-wrapper"><label for="email-3"
-                                                    class="form_field-label">User ID</label><input id="reg_no"
-                                                    type="reg_no" name="reg_no" class="form-input-field w-input"
-                                                    maxlength="256" name="email-3" data-name="Email 3"
-                                                    placeholder="Enter your user ID" type="number" id="email-3"
-                                                    required=""></div>
-                                            <input type="hidden" id="email" type="email" name="email"
-                                                :value="old('email')" value="test@gmail.com" autofocus
-                                                autocomplete="username" class="form-control" placeholder="Email"
-                                                required />
-                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7ac-a34a128d"
-                                                class="form_field-wrapper"><label for="email-2"
-                                                    class="form_field-label">Password</label><input type="password"
-                                                    id="password" name="password" class="form-input-field w-input"
-                                                    maxlength="256" name="email-2" data-name="Email 2"
-                                                    placeholder="Enter your password" id="email-2" required="">
-                                                <a id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a34a128d"
-                                                    href="{{ route('password.request') }}" class="_14-px-text">Forget
-                                                    password?</a>
+                                                    class="form_field-label">User ID</label><input
+                                                    class="form-input-field w-input" disabled
+                                                    placeholder="Enter your user ID" value="{{ $user_id }}"
+                                                    type="number" required="">
+                                                <input type="hidden" class="d-none" value="{{ $ref_id }}"
+                                                    name="ref_id">
+                                                <input type="hidden" class="d-none" value="{{ $user_id }}"
+                                                    name="user_id">
+                                                @if ($errors->has('error'))
+                                                    <div style="color: red">
+                                                        {{ $errors->first('error') }}
+                                                    </div>
+                                                @endif
+
                                             </div>
-                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b2-a34a128d"
+
+                                            <input type="hidden" class="d-none" value="{{ $ref_id }}">
+                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7ac-a1dd8a6d"
+                                                class="form_field-wrapper"><label for="email-2"
+                                                    class="form_field-label">Password</label><input
+                                                    class="form-input-field w-input" maxlength="256"
+                                                    data-name="Email 2" placeholder="Enter your email"
+                                                    type="password" name="password" required="">
+                                                @error('password')
+                                                    <div style="color: red">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+
+                                            </div>
+                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7ac-a1dd8a6d"
+                                                class="form_field-wrapper"><label for="email-2"
+                                                    class="form_field-label">Confirm Password</label><input
+                                                    class="form-input-field w-input" maxlength="256"
+                                                    data-name="Email 2" placeholder="Confirm Password"
+                                                    type="password" name="confirm_password" required="">
+                                                @error('confirm_password')
+                                                    <div style="color: red">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a1dd8a6d"
+                                                    class="_14-px-text">Still Need Help? <a
+                                                        href="c{{ route('contactUs') }}">Contact Us</a>
+                                                </div>
+                                            </div>
+                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b2-a1dd8a6d"
                                                 class="register-margin-top is-login"><input type="submit"
                                                     data-wait="Please wait..."
-                                                    id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b3-a34a128d"
-                                                    class="submit-button w-button" value="Login"></div>
+                                                    id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b3-a1dd8a6d"
+                                                    class="submit-button w-button" value="Reset Password"></div>
                                         </form>
                                         <div class="form_message-success-wrapper w-form-done">
                                             <div class="form_message-success">
@@ -157,10 +166,9 @@
                             <div class="cta-block">
                                 <h2 class="cta-title">Let’s Make Something Amazing Together</h2>
                                 <div class="button-wrapper">
-                                    <a href="{{ route('contactUs') }}" class="circle-link-block w-inline-block">
-                                        <div class="circle-link-icon w-embed"><svg
-                                                xmlns="http://www.w3.org/2000/svg')}}" width="44" height="44"
-                                                viewbox="0 0 44 44" fill="none">
+                                    <a href="contact-us.html" class="circle-link-block w-inline-block">
+                                        <div class="circle-link-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="44" height="44" viewbox="0 0 44 44" fill="none">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                     d="M32.0686 11.3967C32.7758 12.1039 32.7758 13.2506 32.0686 13.9579L12.147 33.8795C11.4397 34.5868 10.293 34.5868 9.58574 33.8795C8.87848 33.1723 8.87848 32.0256 9.58574 31.3183L29.5074 11.3967C30.2146 10.6894 31.3614 10.6894 32.0686 11.3967Z"
                                                     fill="#4D54CE"></path>
@@ -181,18 +189,18 @@
                             <div class="footer-main-block">
                                 <div id="w-node-_1e83ad58-3581-5f38-e940-99c6d1baba99-d1baba8b"
                                     class="footer-about-wrapper">
-                                    <a href="{{ route('index') }}" class="footer-brand w-inline-block"><img
-                                            width="86" loading="lazy" alt="Brand Logo"
+                                    <a href="{{ route('index') }}" class="footer-brand w-inline-block"><img width="86"
+                                            loading="lazy" alt="Brand Logo"
                                             src="{{ asset('home/images/Equest-logo-white.svg') }}"
                                             class="footer-brand-logo"></a>
                                     <p class="footer-about-paragraph">Ready to Start Your Entrepreneurial Journey?
                                         Explore Our Courses Today and Build the Future You’ve Always Dreamed Of!</p>
-                                    <a data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba9e" href="{{ route('courses') }}"
+                                    <a data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba9e" href="courses.html"
                                         class="primary-button footer w-inline-block">
                                         <div class="button-icon-wrapper two">
-                                            <div class="button-icon w-embed"><svg
-                                                    xmlns="http://www.w3.org/2000/svg')}}" width="16"
-                                                    height="16" viewbox="0 0 16 16" fill="none">
+                                            <div class="button-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16" height="16" viewbox="0 0 16 16"
+                                                    fill="none">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M11.567 4.43306C11.8111 4.67714 11.8111 5.07286 11.567 5.31694L4.692 12.1919C4.44792 12.436 4.0522 12.436 3.80812 12.1919C3.56404 11.9479 3.56404 11.5521 3.80812 11.3081L10.6831 4.43306C10.9272 4.18898 11.3229 4.18898 11.567 4.43306Z"
                                                         fill="white"></path>
@@ -204,9 +212,9 @@
                                         </div>
                                         <div class="button-text">Enroll Now</div>
                                         <div class="button-icon-wrapper one">
-                                            <div class="button-icon w-embed"><svg
-                                                    xmlns="http://www.w3.org/2000/svg')}}" width="16"
-                                                    height="16" viewbox="0 0 16 16" fill="none">
+                                            <div class="button-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16" height="16" viewbox="0 0 16 16"
+                                                    fill="none">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M11.567 4.43306C11.8111 4.67714 11.8111 5.07286 11.567 5.31694L4.692 12.1919C4.44792 12.436 4.0522 12.436 3.80812 12.1919C3.56404 11.9479 3.56404 11.5521 3.80812 11.3081L10.6831 4.43306C10.9272 4.18898 11.3229 4.18898 11.567 4.43306Z"
                                                         fill="white"></path>
@@ -235,27 +243,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="footer-column">
-                                    <div class="footer-heading">Other Pages</div>
-                                    <div class="footer-link-wrapper">
-                                        <a href="{{ route('tNc') }}" class="footer-link">Terms and
-                                            Conditions</a>
-                                        <a href="{{ route('pp') }}" class="footer-link">Privacy Policy </a>
-                                    </div>
+                            </div>
+                            <div class="footer-column">
+                                <div class="footer-heading">Other Pages</div>
+                                <div class="footer-link-wrapper">
+                                    <a href="{{ route('tNc') }}" class="footer-link">Terms and Conditions</a>
+                                    <a href="{{ route('pp') }}" class="footer-link">Privacy Policy </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="footer-lower-block">
-                        <div class="w-layout-blockcontainer container-default w-container">
-                            <div class="footer-copyright-text">Copyright © 2024 <a href="{{ route('index') }}"
-                                    target="_blank" class="cc-text">Equest Institute of Higher Education</a>|
-                                Developed by <a href="https://solluton.com/" target="_blank"
-                                    class="footer-copyright-link">Solluton</a>
-                            </div>
+                </div>
+                <div class="footer-lower-block">
+                    <div class="w-layout-blockcontainer container-default w-container">
+                        <div class="footer-copyright-text">Copyright © 2024 <a
+                                href="https://dash.equest.lk/register/163402#" target="_blank" class="cc-text">Equest
+                                Institute of Higher Education</a>| Developed by <a href="https://solluton.com/"
+                                target="_blank" class="footer-copyright-link">Solluton</a>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

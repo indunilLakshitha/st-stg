@@ -1,28 +1,15 @@
 <!DOCTYPE html><!--  Last Published: Sat Jan 11 2025 06:27:08 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="67800646d025f688a34a128d" data-wf-site="6744125b4028f712efbe2a96">
+<html data-wf-page="67815d6a0de7eed5c9807dd7" data-wf-site="6744125b4028f712efbe2a96">
 
 <head>
     <meta charset="utf-8">
-    <title>Login | Equest Institute of Higher Education</title>
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        name="description">
-    <meta content="Login | Equest Institute of Higher Education" property="og:title">
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        property="og:description">
-    <meta
-        content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
+    <title>Terms and Conditions</title>
+    <meta content="Terms and Conditions" property="og:title">
+    <meta content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
         property="og:image">
-    <meta content="Login | Equest Institute of Higher Education" property="twitter:title">
-    <meta
-        content="Log in to your Equest Institute of Higher Education account to access courses, track progress, and manage your profile."
-        property="twitter:description">
-    <meta
-        content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
+    <meta content="Terms and Conditions" property="twitter:title">
+    <meta content="https://cdn.prod.website-files.com/6744125b4028f712efbe2a96/67820d51bcc1aee9221799ee_equest-og.png')}}"
         property="twitter:image">
-    <meta property="og:type" content="website">
-    <meta content="summary_large_image" name="twitter:card">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="{{ asset('home/css/normalize.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('home/css/webflow.css') }}" rel="stylesheet" type="text/css">
@@ -35,8 +22,8 @@
                 .className += t + "touch")
         }(window, document);
     </script>
-    <link href="{{ asset('home/images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
-    <link href="{{ asset('home/images/webclip.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('home/images/favicon.png')}}')}}" rel="shortcut icon" type="image/x-icon">
+    <link href="{{ asset('home/images/webclip.png')}}')}}" rel="apple-touch-icon">
     <style>
         a.w-webflow-badge {
             display: none !important;
@@ -52,10 +39,10 @@
                     data-easing2="ease" role="banner" class="navbar-container w-nav">
                     <div class="navbar-wrapper">
                         <a href="{{ route('index') }}" class="navbar-brand w-nav-brand"><img loading="lazy"
-                                src="{{ asset('home/images/Equest-logo.svg') }}" alt="Brand Logo"
-                                class="brand-logo"></a>
+                                src="{{asset('home/images/Equest-logo.svg')}}" alt="Brand Logo" class="brand-logo"></a>
                         <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
-                            @include('home.common.nav_links')
+                            <ul role="list" class="nav-menu w-list-unstyled">
+                                @include('home.common.nav_links')
                         </nav>
                         <div class="menu-button w-nav-button">
                             <div class="w-icon-nav-menu"></div>
@@ -65,85 +52,64 @@
             </div>
         </header>
         <main class="main-wrapper">
-            <section class="home-about-section">
-                <div class="section-gap is-registerform">
+            <section data-wf--breadcrumb--variant="contact"
+                class="breadcrumb-section w-variant-fa0eceb9-cafe-b4ed-07b7-48ebbc06e61c">
+                <div class="section-gap">
                     <div class="w-layout-blockcontainer container-default w-container">
-                        <div class="home-about-wrapper">
-                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e2-a34a128d"
-                                class="home-about-image-block is-login"><img
-                                    src="{{ asset('home/images/home-about-image.jpg') }}" loading="lazy"
-                                    sizes="(max-width: 479px) 94vw, (max-width: 681px) 95vw, (max-width: 991px) 647px, (max-width: 1279px) 440px, (max-width: 1439px) 542.5px, 646.890625px"
-                                    srcset="{{ asset('home/images/home-about-image-p-500.jpg') }} 500w, {{ asset('home/images/home-about-image.jpg') }} 647w"
-                                    alt="Home About Image" class="home-about-image h-100"></div>
-                            <div id="w-node-_4504abfe-e50f-4aac-bd0f-ccdd7bb449e9-a34a128d"
-                                class="home-about-content-block is-login">
-                                <div class="contact-us-form-block">
-                                    <div class="section-title-wrapper center is-low">
-                                        <div class="overflow-hidden">
-                                            <h2 data-w-id="b95a6cd3-528c-a887-18c6-53b0075de7a1"
-                                                style="-webkit-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-moz-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-ms-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(null) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform-style:preserve-3d"
-                                                class="section-title is-credintail">Login</h2>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <p data-w-id="b95a6cd3-528c-a887-18c6-53b0075de7a4"
-                                                style="-webkit-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-moz-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);-ms-transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform:translate3d(0, 180%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(-45deg) rotateZ(0) skew(-10deg, 10deg);transform-style:preserve-3d"
-                                                class="section-title-except">Please fill in all your credentials to log
-                                                in.</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact2_form-block w-form">
-                                        <form method="POST" action="{{ route('login') }}"
-                                            id="wf-form-Registration-Form" name="wf-form-Registration-Form"
-                                            data-name="Registration Form" class="contact2_form"
-                                            data-wf-page-id="67800646d025f688a34a128d"
-                                            data-wf-element-id="b95a6cd3-528c-a887-18c6-53b0075de7a7">
-                                            @error('email')
-                                                <div style="color: red">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                            @csrf
-                                            <div class="form_field-wrapper"><label for="email-3"
-                                                    class="form_field-label">User ID</label><input id="reg_no"
-                                                    type="reg_no" name="reg_no" class="form-input-field w-input"
-                                                    maxlength="256" name="email-3" data-name="Email 3"
-                                                    placeholder="Enter your user ID" type="number" id="email-3"
-                                                    required=""></div>
-                                            <input type="hidden" id="email" type="email" name="email"
-                                                :value="old('email')" value="test@gmail.com" autofocus
-                                                autocomplete="username" class="form-control" placeholder="Email"
-                                                required />
-                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7ac-a34a128d"
-                                                class="form_field-wrapper"><label for="email-2"
-                                                    class="form_field-label">Password</label><input type="password"
-                                                    id="password" name="password" class="form-input-field w-input"
-                                                    maxlength="256" name="email-2" data-name="Email 2"
-                                                    placeholder="Enter your password" id="email-2" required="">
-                                                <a id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b0-a34a128d"
-                                                    href="{{ route('password.request') }}" class="_14-px-text">Forget
-                                                    password?</a>
-                                            </div>
-                                            <div id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b2-a34a128d"
-                                                class="register-margin-top is-login"><input type="submit"
-                                                    data-wait="Please wait..."
-                                                    id="w-node-b95a6cd3-528c-a887-18c6-53b0075de7b3-a34a128d"
-                                                    class="submit-button w-button" value="Login"></div>
-                                        </form>
-                                        <div class="form_message-success-wrapper w-form-done">
-                                            <div class="form_message-success">
-                                                <div class="success-text">Thank you! Your submission has been received!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form_message-error-wrapper w-form-fail">
-                                            <div class="form_message-error">
-                                                <div class="error-text">Oops! Something went wrong while submitting the
-                                                    form.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="breadcrumb-content-block">
+                            <div data-w-id="73831a50-f11a-da87-b439-1eab076c2a89" class="breadcrumb-link-wrapper">
+                                <div class="breadcrumb-text">Legal</div>
                             </div>
+                            <div class="overflow-hidden">
+                                <h1 data-w-id="73831a50-f11a-da87-b439-1eab076c2a90" class="breadcrumb-title">Terms and
+                                    Conditions</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="breadcrumb-shape-wrapper">
+                        <div class="breadcrumb-overlay"></div><img src="{{asset('home/images/breadcrumb-bg-shape.png')}}" loading="lazy"
+                            sizes="100vw"
+                            srcset="{{asset('home/images/breadcrumb-bg-shape-p-500.png')}} 500w, {{asset('home/images/breadcrumb-bg-shape-p-800.png')}} 800w, {{asset('home/images/breadcrumb-bg-shape-p-1080.png')}} 1080w, {{asset('home/images/breadcrumb-bg-shape.png')}} 1920w"
+                            alt="Breadcrumb BG Shape" class="breadcrumb-bg-shape">
+                    </div>
+                </div>
+            </section>
+            <section class="contact-info-section">
+                <div class="section-gap">
+                    <div class="w-layout-blockcontainer container-default w-container">
+                        <div class="w-richtext">
+                            <ul role="list">
+                                <li>Equest International (PVT) Ltd has been incorporated as a private company with
+                                    limited liability having complied with the requirements of the companies Act No. 07
+                                    of 2007 under the registration no. PV00215879</li>
+                                <li>Our institute will provide 100% fair knowledge and guide you when and where
+                                    necessary at relevant stages when you’re applying the learned theories practically.
+                                </li>
+                                <li>Equest International (PVT) Ltd is an institute which provides knowledge and it
+                                    doesn’t takes any kind of responsibility about any individual income.</li>
+                                <li>The first step to Cryptocurrency</li>
+                                <li>If by any chance an account is being restricted/suspended, we will take full
+                                    responsibility and if it’s possible we will reinstate those accounts. If we
+                                    couldn’t, we will create a new account from the beginning and guide you through the
+                                    relevant process (there will be no additional charges for such instances)</li>
+                                <li>Our institute will not take any kind of responsibility about the outcome, if a
+                                    student has violated any kind of policy that we had taught not to do, during the
+                                    entire course. but we will assist you at such situations as much as we can.</li>
+                                <li>If you need any assistance rather than the support you’re given through Equest
+                                    Official groups, you can visit the nearest branch on revision dates after informing
+                                    the relevant authorities.</li>
+                                <li>Once you have participated you should complete your payment by the end of the
+                                    relevant date as per announced and to gain the full results you should complete the
+                                    course.</li>
+                                <li>The course fee is non-refundable under any circumstances once you have participated
+                                    for the first session.</li>
+                                <li>Our institute will provide a lifetime support to each and every student who have
+                                    successfully completed our course and it will be free of charge</li>
+                                <li>Course fee should be handed over to the relevant branches when participating to
+                                    physical classes and who are willing participate for online classes can use the
+                                    following account number 003510017969 of Sampath bank, Galle.</li>
+                            </ul>
+                            <h1>‍</h1>
                         </div>
                     </div>
                 </div>
@@ -157,20 +123,18 @@
                             <div class="cta-block">
                                 <h2 class="cta-title">Let’s Make Something Amazing Together</h2>
                                 <div class="button-wrapper">
-                                    <a href="{{ route('contactUs') }}" class="circle-link-block w-inline-block">
-                                        <div class="circle-link-icon w-embed"><svg
-                                                xmlns="http://www.w3.org/2000/svg')}}" width="44" height="44"
-                                                viewbox="0 0 44 44" fill="none">
+                                    <a href="contact-us.html" class="circle-link-block w-inline-block">
+                                        <div class="circle-link-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="44" height="44" viewbox="0 0 44 44" fill="none">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                     d="M32.0686 11.3967C32.7758 12.1039 32.7758 13.2506 32.0686 13.9579L12.147 33.8795C11.4397 34.5868 10.293 34.5868 9.58574 33.8795C8.87848 33.1723 8.87848 32.0256 9.58574 31.3183L29.5074 11.3967C30.2146 10.6894 31.3614 10.6894 32.0686 11.3967Z"
                                                     fill="#4D54CE"></path>
                                                 <path
                                                     d="M31.2306 9.58054C31.739 9.72888 32.4297 9.98897 32.9533 10.5125C33.4769 11.0361 33.7371 11.7269 33.8855 12.2353C34.0494 12.7973 34.1577 13.433 34.2323 14.0724C34.3822 15.356 34.4194 16.8626 34.4085 18.2635C34.3974 19.6752 34.3366 21.0308 34.2792 22.0299C34.2504 22.5305 34.2221 22.9443 34.2011 23.2341C34.1906 23.3775 34.1722 23.6122 34.1658 23.693L34.1656 23.6952C34.0816 24.692 33.2054 25.4329 32.2088 25.3489C31.2122 25.2648 30.4723 24.3888 30.5562 23.3922C30.5618 23.3205 30.5786 23.1086 30.5886 22.9715C30.6085 22.6971 30.6353 22.3018 30.663 21.8216C30.7185 20.8594 30.776 19.5674 30.7864 18.235C30.7969 16.8918 30.759 15.5574 30.6346 14.4925C30.5721 13.9577 30.4468 13.3967 30.3615 13.1044C30.0692 13.0191 29.5083 12.8937 28.9735 12.8313C27.9084 12.707 26.574 12.6689 25.2308 12.6794C23.8984 12.6899 22.6065 12.7474 21.6441 12.8028C21.164 12.8305 20.7687 12.8574 20.4945 12.8773C20.3574 12.8873 20.1462 12.9039 20.0745 12.9095C19.0779 12.9935 18.2011 12.2537 18.1171 11.2571C18.0331 10.2604 18.7729 9.38429 19.7697 9.30028L19.7737 9.29995C19.8563 9.29345 20.0893 9.27507 20.2319 9.26471C20.5216 9.24365 20.9355 9.21548 21.436 9.18667C22.435 9.12919 23.7906 9.0685 25.2025 9.05745C26.6034 9.04648 28.11 9.08375 29.3935 9.23361C30.033 9.30826 30.6687 9.41651 31.2306 9.58054Z"
                                                     fill="#4D54CE"></path>
-                                            </svg></div><img
-                                            src="{{ asset('home/images/contact-us-circular-text.svg') }}"
-                                            loading="lazy" data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba95"
-                                            alt="Circular Text" class="circular-text">
+                                            </svg></div><img src="{{asset('home/images/contact-us-circular-text.svg')}}" loading="lazy"
+                                            data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba95" alt="Circular Text"
+                                            class="circular-text">
                                     </a>
                                 </div>
                             </div>
@@ -181,18 +145,17 @@
                             <div class="footer-main-block">
                                 <div id="w-node-_1e83ad58-3581-5f38-e940-99c6d1baba99-d1baba8b"
                                     class="footer-about-wrapper">
-                                    <a href="{{ route('index') }}" class="footer-brand w-inline-block"><img
-                                            width="86" loading="lazy" alt="Brand Logo"
-                                            src="{{ asset('home/images/Equest-logo-white.svg') }}"
+                                    <a href="{{ route('index') }}" class="footer-brand w-inline-block"><img width="86"
+                                            loading="lazy" alt="Brand Logo" src="{{asset('home/images/Equest-logo-white.svg')}}"
                                             class="footer-brand-logo"></a>
                                     <p class="footer-about-paragraph">Ready to Start Your Entrepreneurial Journey?
                                         Explore Our Courses Today and Build the Future You’ve Always Dreamed Of!</p>
-                                    <a data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba9e" href="{{ route('courses') }}"
+                                    <a data-w-id="1e83ad58-3581-5f38-e940-99c6d1baba9e" href="courses.html"
                                         class="primary-button footer w-inline-block">
                                         <div class="button-icon-wrapper two">
-                                            <div class="button-icon w-embed"><svg
-                                                    xmlns="http://www.w3.org/2000/svg')}}" width="16"
-                                                    height="16" viewbox="0 0 16 16" fill="none">
+                                            <div class="button-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16" height="16" viewbox="0 0 16 16"
+                                                    fill="none">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M11.567 4.43306C11.8111 4.67714 11.8111 5.07286 11.567 5.31694L4.692 12.1919C4.44792 12.436 4.0522 12.436 3.80812 12.1919C3.56404 11.9479 3.56404 11.5521 3.80812 11.3081L10.6831 4.43306C10.9272 4.18898 11.3229 4.18898 11.567 4.43306Z"
                                                         fill="white"></path>
@@ -204,9 +167,9 @@
                                         </div>
                                         <div class="button-text">Enroll Now</div>
                                         <div class="button-icon-wrapper one">
-                                            <div class="button-icon w-embed"><svg
-                                                    xmlns="http://www.w3.org/2000/svg')}}" width="16"
-                                                    height="16" viewbox="0 0 16 16" fill="none">
+                                            <div class="button-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16" height="16" viewbox="0 0 16 16"
+                                                    fill="none">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M11.567 4.43306C11.8111 4.67714 11.8111 5.07286 11.567 5.31694L4.692 12.1919C4.44792 12.436 4.0522 12.436 3.80812 12.1919C3.56404 11.9479 3.56404 11.5521 3.80812 11.3081L10.6831 4.43306C10.9272 4.18898 11.3229 4.18898 11.567 4.43306Z"
                                                         fill="white"></path>
@@ -248,9 +211,10 @@
                     </div>
                     <div class="footer-lower-block">
                         <div class="w-layout-blockcontainer container-default w-container">
-                            <div class="footer-copyright-text">Copyright © 2024 <a href="{{ route('index') }}"
-                                    target="_blank" class="cc-text">Equest Institute of Higher Education</a>|
-                                Developed by <a href="https://solluton.com/" target="_blank"
+                            <div class="footer-copyright-text">Copyright © 2024 <a
+                                    href="https://dash.equest.lk/register/163402#" target="_blank"
+                                    class="cc-text">Equest Institute of Higher Education</a>| Developed by <a
+                                    href="https://solluton.com/" target="_blank"
                                     class="footer-copyright-link">Solluton</a>
                             </div>
                         </div>
@@ -259,8 +223,8 @@
             </div>
         </section>
     </main>
-    <a href="#top" class="scroll-to-top w-inline-block"><img src="{{ asset('home/images/scroll-to-top.svg') }}"
-            loading="lazy" alt="Scroll to Top Icon" class="scroll-to-top-icon"></a>
+    <a href="#top" class="scroll-to-top w-inline-block"><img src="{{asset('home/images/scroll-to-top.svg')}}" loading="lazy"
+            alt="Scroll to Top Icon" class="scroll-to-top-icon"></a>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6744125b4028f712efbe2a96"
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
     </script>

@@ -116,7 +116,7 @@
                             <input type="text" class="form-control ms-auto w-25 me-3" wire:model='search'
                                 wire:input='filter' wire:change='filter()' placeholder="Search here...">
 
-                            <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a>
+                            {{-- <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">ADD</a> --}}
                             {{-- </div> --}}
                         </div>
                     </div>
@@ -235,9 +235,9 @@
                                             @endif
                                             @if ($user->referrel_enabled && $user->er_status == 3)
                                                 <button class="btn btn-danger btn-icon" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" title="Enable Refferrel"
+                                                    data-bs-trigger="hover" title="Disable Refferrel"
                                                     wire:click='enableRef({{ $user->id }})' type="button"
-                                                    wire:confirm="Are you sure you want to Dinable Refferrel this customer?">
+                                                    wire:confirm="Are you sure you want to Disable Refferrel this customer?">
                                                     <i class="fi fi-br-check-double"></i>
                                                 </button>
                                             @endif
@@ -309,5 +309,6 @@
             #pg_id nav .hidden p {
                 margin: 0px;
             }
+
         </style>
 </div>

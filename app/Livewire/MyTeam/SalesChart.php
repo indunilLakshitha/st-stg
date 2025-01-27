@@ -11,6 +11,18 @@ class SalesChart extends Component
 {
     public $leftAccounts, $rightAccounts, $totalLeftPoints, $totalRightPoints;
     public $selectedAccountId, $myTeam, $myMembers, $selectedUser;
+    public $selected =
+    [
+        'name' => '',
+        'contact' => '',
+        'city' => '',
+        'district' => '',
+        'agent_1' => 0,
+        'agent_2' => 0,
+        'id' => '',
+        'a1' => 0,
+        'a2' => 0,
+    ];
 
     public function mount($userId = null)
     {
@@ -90,6 +102,42 @@ class SalesChart extends Component
     public function render()
     {
         return view('livewire.my-team.sales-chart');
+    }
+
+    public function setSelectedUser($id)
+    {
+        $user = User::with('city', 'district', 'childA1', 'childA2')
+            ->where('id', $id)
+            ->select(
+                'id',
+                'dashboard_city_id',
+                'dashboard_district_id',
+                'left_points',
+                'right_points',
+                'dummy_a1_id',
+                'dummy_a2_id',
+                'id',
+                'mobile_no',
+                'last_name',
+                'first_name',
+            )
+            ->first();
+        return  $this->setModalData(user: $user);
+    }
+
+    public function setModalData(User $user)
+    {
+
+        $this->selected['name'] = $user->first_name . ' ' . $user->last_name;
+        $this->selected['city'] = $user->city?->name_en;
+        $this->selected['contact'] = $user->mobile_no;
+        $this->selected['id'] = $user->id;
+        $this->selected['agent_1'] = $user->childA1?->left_points + $user->childA1?->right_points;
+        $this->selected['agent_2'] = $user->childA2?->left_points + $user->childA2?->right_points;
+        $this->selected['a1'] = $user->left_points;
+        $this->selected['a2'] = $user->right_points;
+        $this->selected['district'] = $user->district?->name_en;
+        return $this->dispatch('show_modal', ['title' => '']);
     }
 
     public function filter()

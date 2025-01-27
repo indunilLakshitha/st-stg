@@ -38,6 +38,11 @@ trait ComissionTrait
     public function addDirectComission(string $userId, string $amount)
     {
 
+        $ref_user = User::find($userId);
+        if ($ref_user->er_status != User::USER_STATUS['ER']) {
+            return;
+        }
+
         $wallet = Wallet::where('user_id', $userId)->first();
         if (!isset($wallet)) {
             $wallet = new Wallet();
