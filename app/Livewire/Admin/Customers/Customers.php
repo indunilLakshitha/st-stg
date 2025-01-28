@@ -191,6 +191,10 @@ class Customers extends Component
             $customer->payment_status = User::USER_STATUS['FULL'];
             $customer->save();
 
+            User::where('parent_id', $customer->id)->update([
+                'er_status' => $customer->er_status,
+                'payment_status' => $customer->payment_status,
+            ]);
 
             $appliedCourse = UserPuchasedCourse::with('course')->where('user_id', $customer->id)
                 ->where('type', UserPuchasedCourse::TYPE['REFERRAL'])
@@ -204,7 +208,8 @@ class Customers extends Component
             if (
                 $customer->points_disabled == 0 &&
                 $customer->payment_status == User::PAYMENT_STATUS['FULL'] &&
-                $customer->er_status == User::PAYMENT_STATUS['FULL']
+                $customer->er_status == User::PAYMENT_STATUS['FULL'] &&
+                $customer->type == User::USER_TYPE['MAIN']
             ) {
 
 
@@ -215,7 +220,7 @@ class Customers extends Component
             }
             // session()->flash('message', 'User successfully Unblocked.');
             $this->dispatch('success_alert', ['title' => 'User successfully Full Activated']);
-            return $this->mount();
+            return $this->render();
         }
 
         return abort(404);
